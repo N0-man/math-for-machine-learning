@@ -1,0 +1,780 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>2. Linear Equations &#8212; Math for ML Book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '01 Equations, Graphs and Fucntions/01-02-Linear Equations';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="3. Systems of Equations" href="01-03-Systems%20of%20Equations.html" />
+    <link rel="prev" title="1. Getting Started with Equations" href="01-01-Introduction%20to%20Equations.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Math for ML Book - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Math for ML Book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to Math for Machine Learning Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">01 Equations, Graphs and Fucntions</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01-01-Introduction%20to%20Equations.html">1. Getting Started with Equations</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">2. Linear Equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01-03-Systems%20of%20Equations.html">3. Systems of Equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01-04-Exponentials%20Radicals%20and%20Logarithms.html">4. Exponentials, Radicals, and Logs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01-05-Polynomials.html">5. Polynomials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01-06-Factorization.html">6. Factorization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01-07-Quadratic%20Equations.html">7. Quadratic Equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01-08-Functions.html">8. Functions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">02 Derivatives and Optimization</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../02%20%20Derivatives%20and%20Optimization/02-01-Rate%20of%20Change.html">9. Rate of Change</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/N0-man/math-for-machine-learning" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/N0-man/math-for-machine-learning/issues/new?title=Issue%20on%20page%20%2F01 Equations, Graphs and Fucntions/01-02-Linear Equations.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/01 Equations, Graphs and Fucntions/01-02-Linear Equations.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Linear Equations</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-a-linear-equation">2.1. Solving a Linear Equation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intercepts">2.2. Intercepts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#slope">2.3. Slope</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#slope-intercept-form">2.3.1. Slope-Intercept Form</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="linear-equations">
+<h1><span class="section-number">2. </span>Linear Equations<a class="headerlink" href="#linear-equations" title="Link to this heading">#</a></h1>
+<p>The equations in the previous lab included one variable, for which you solved the equation to find its value. Now let’s look at equations with multiple variables. For reasons that will become apparent, equations with two variables are known as linear equations.</p>
+<section id="solving-a-linear-equation">
+<h2><span class="section-number">2.1. </span>Solving a Linear Equation<a class="headerlink" href="#solving-a-linear-equation" title="Link to this heading">#</a></h2>
+<p>Consider the following equation:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-51b68562-2fd2-4f02-af3b-df2d8130cd2b">
+<span class="eqno">(2.1)<a class="headerlink" href="#equation-51b68562-2fd2-4f02-af3b-df2d8130cd2b" title="Permalink to this equation">#</a></span>\[\begin{equation}2y + 3 = 3x - 1 \end{equation}\]</div>
+<p>This equation includes two different variables, <strong>x</strong> and <strong>y</strong>. These variables depend on one another; the value of x is determined in part by the value of y and vice-versa; so we can’t solve the equation and find absolute values for both x and y. However, we <em>can</em> solve the equation for one of the variables and obtain a result that describes a relative relationship between the variables.</p>
+<p>For example, let’s solve this equation for y. First, we’ll get rid of the constant on the right by adding 1 to both sides:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-8a4dec58-63aa-4ebf-9fde-8487c5c8a0c0">
+<span class="eqno">(2.2)<a class="headerlink" href="#equation-8a4dec58-63aa-4ebf-9fde-8487c5c8a0c0" title="Permalink to this equation">#</a></span>\[\begin{equation}2y + 4 = 3x \end{equation}\]</div>
+<p>Then we’ll use the same technique to move the constant on the left to the right to isolate the y term by subtracting 4 from both sides:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-a00674f3-04dd-4ad2-a188-f5cbbbc15cdb">
+<span class="eqno">(2.3)<a class="headerlink" href="#equation-a00674f3-04dd-4ad2-a188-f5cbbbc15cdb" title="Permalink to this equation">#</a></span>\[\begin{equation}2y = 3x - 4 \end{equation}\]</div>
+<p>Now we can deal with the coefficient for y by dividing both sides by 2:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-cd124a60-73c7-4214-8821-7bcc5b6f5ef4">
+<span class="eqno">(2.4)<a class="headerlink" href="#equation-cd124a60-73c7-4214-8821-7bcc5b6f5ef4" title="Permalink to this equation">#</a></span>\[\begin{equation}y = \frac{3x - 4}{2} \end{equation}\]</div>
+<p>Our equation is now solved. We’ve isolated <strong>y</strong> and defined it as <sup>3x-4</sup>/<sub>2</sub></p>
+<p>While we can’t express <strong>y</strong> as a particular value, we can calculate it for any value of <strong>x</strong>. For example, if <strong>x</strong> has a value of 6, then <strong>y</strong> can be calculated as:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-ee3d5bb8-5870-4615-91ae-782d3b03a3bf">
+<span class="eqno">(2.5)<a class="headerlink" href="#equation-ee3d5bb8-5870-4615-91ae-782d3b03a3bf" title="Permalink to this equation">#</a></span>\[\begin{equation}y = \frac{3\cdot6 - 4}{2} \end{equation}\]</div>
+<p>This gives the result <sup>14</sup>/<sub>2</sub> which can be simplified to 7.</p>
+<p>You can view the values of <strong>y</strong> for a range of <strong>x</strong> values by applying the equation to them using the following Python code:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># Create a dataframe with an x column containing values from -10 to 10</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="p">({</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">)})</span>
+
+<span class="c1"># Add a y column by applying the solved equation to x</span>
+<span class="c1"># solving the equation (3x - 4)/2 = y</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="mi">4</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+
+<span class="c1">#Display the dataframe</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1"># Create a dataframe with an x column containing values from -10 to 10</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="p">({</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">)})</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;pandas&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can also plot these values to visualize the relationship between x and y as a line. For this reason, equations that describe a relative relationship between two variables are known as <em>linear equations</em>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;grey&quot;</span><span class="p">,</span> <span class="n">marker</span> <span class="o">=</span> <span class="s2">&quot;o&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In a linear equation, a valid solution is described by an ordered pair of x and y values. For example, valid solutions to the linear equation above include:</p>
+<ul class="simple">
+<li><p>(-10, -17)</p></li>
+<li><p>(0, -2)</p></li>
+<li><p>(9, 11.5)</p></li>
+</ul>
+<p>The cool thing about linear equations is that we can plot the points for some specific ordered pair solutions to create the line, and then interpolate the x value for any y value (or vice-versa) along the line.</p>
+</section>
+<section id="intercepts">
+<h2><span class="section-number">2.2. </span>Intercepts<a class="headerlink" href="#intercepts" title="Link to this heading">#</a></h2>
+<p>When we use a linear equation to plot a line, we can easily see where the line intersects the X and Y axes of the plot. These points are known as <em>intercepts</em>. The <em>x-intercept</em> is where the line intersects the X (horizontal) axis, and the <em>y-intercept</em> is where the line intersects the Y (horizontal) axis.</p>
+<p>Let’s take a look at the line from our linear equation with the X and Y axis shown through the origin (0,0).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;grey&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+
+<span class="c1">## add axis lines for 0,0</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The x-intercept is the point where the line crosses the X axis, and at this point, the <strong>y</strong> value is always 0. Similarly, the y-intercept is where the line crosses the Y axis, at which point the <strong>x</strong> value is 0. So to find the intercepts, we need to solve the equation for <strong>x</strong> when <strong>y</strong> is 0.</p>
+<p>For the x-intercept, our equation looks like this:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-1a3835d1-45e1-4e53-8ac0-749a0e0de17c">
+<span class="eqno">(2.6)<a class="headerlink" href="#equation-1a3835d1-45e1-4e53-8ac0-749a0e0de17c" title="Permalink to this equation">#</a></span>\[\begin{equation}0 = \frac{3x - 4}{2} \end{equation}\]</div>
+<p>Which can be reversed to make it look more familar with the x expression on the left:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-4d1c1b50-d7c4-4c32-97a6-41c57eb90385">
+<span class="eqno">(2.7)<a class="headerlink" href="#equation-4d1c1b50-d7c4-4c32-97a6-41c57eb90385" title="Permalink to this equation">#</a></span>\[\begin{equation}\frac{3x - 4}{2} = 0 \end{equation}\]</div>
+<p>We can multiply both sides by 2 to get rid of the fraction:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-cdc5d867-af19-4136-9f77-42c2b812fb8d">
+<span class="eqno">(2.8)<a class="headerlink" href="#equation-cdc5d867-af19-4136-9f77-42c2b812fb8d" title="Permalink to this equation">#</a></span>\[\begin{equation}3x - 4 = 0 \end{equation}\]</div>
+<p>Then we can add 4 to both sides to get rid of the constant on the left:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-fa5808b1-fa86-4386-a219-4c9e5cefc95a">
+<span class="eqno">(2.9)<a class="headerlink" href="#equation-fa5808b1-fa86-4386-a219-4c9e5cefc95a" title="Permalink to this equation">#</a></span>\[\begin{equation}3x = 4 \end{equation}\]</div>
+<p>And finally we can divide both sides by 3 to get the value for x:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-c87777ba-417c-4c90-b67c-c00c70b233f7">
+<span class="eqno">(2.10)<a class="headerlink" href="#equation-c87777ba-417c-4c90-b67c-c00c70b233f7" title="Permalink to this equation">#</a></span>\[\begin{equation}x = \frac{4}{3} \end{equation}\]</div>
+<p>Which simplifies to:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-191cf7e9-9235-4f62-a5ba-105ea34e7cab">
+<span class="eqno">(2.11)<a class="headerlink" href="#equation-191cf7e9-9235-4f62-a5ba-105ea34e7cab" title="Permalink to this equation">#</a></span>\[\begin{equation}x = 1\frac{1}{3} \end{equation}\]</div>
+<p>So the x-intercept is 1<sup>1</sup>/<sub>3</sub> (approximately 1.333).</p>
+<p>To get the y-intercept, we solve the equation for y when x is 0:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-c96d7685-354e-41c3-bbf7-5a1685061267">
+<span class="eqno">(2.12)<a class="headerlink" href="#equation-c96d7685-354e-41c3-bbf7-5a1685061267" title="Permalink to this equation">#</a></span>\[\begin{equation}y = \frac{3\cdot0 - 4}{2} \end{equation}\]</div>
+<p>Since 3 x 0 is 0, this can be simplified to:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-6e220759-3c0d-4d34-be69-9dba6ae35be1">
+<span class="eqno">(2.13)<a class="headerlink" href="#equation-6e220759-3c0d-4d34-be69-9dba6ae35be1" title="Permalink to this equation">#</a></span>\[\begin{equation}y = \frac{-4}{2} \end{equation}\]</div>
+<p>-4 divided by 2 is -2, so:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-83315c28-6f63-4d91-bea3-833414cd497a">
+<span class="eqno">(2.14)<a class="headerlink" href="#equation-83315c28-6f63-4d91-bea3-833414cd497a" title="Permalink to this equation">#</a></span>\[\begin{equation}y = -2 \end{equation}\]</div>
+<p>This gives us our y-intercept, so we can plot both intercepts on the graph:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;grey&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+
+<span class="c1">## add axis lines for 0,0</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;x-intercept&#39;</span><span class="p">,(</span><span class="mf">1.333</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;y-intercept&#39;</span><span class="p">,(</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The ability to calculate the intercepts for a linear equation is useful, because you can calculate only these two points and then draw a straight line through them to create the entire line for the equation.</p>
+</section>
+<section id="slope">
+<h2><span class="section-number">2.3. </span>Slope<a class="headerlink" href="#slope" title="Link to this heading">#</a></h2>
+<p>It’s clear from the graph that the line from our linear equation describes a slope in which values increase as we travel up and to the right along the line. It can be useful to quantify the slope in terms of how much <strong>x</strong> increases (or decreases) for a given change in <strong>y</strong>. In the notation for this, we use the greek letter Δ (<em>delta</em>) to represent change: ( Δx = x-intercept)</p>
+<div class="amsmath math notranslate nohighlight" id="equation-cd1fb5a5-a455-45a4-a4da-5ba066fcd32a">
+<span class="eqno">(2.15)<a class="headerlink" href="#equation-cd1fb5a5-a455-45a4-a4da-5ba066fcd32a" title="Permalink to this equation">#</a></span>\[\begin{equation}slope = \frac{\Delta{y}}{\Delta{x}} \end{equation}\]</div>
+<p>Sometimes slope is represented by the variable <em><strong>m</strong></em>, and the equation is written as:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-d2a11a20-8b8e-4519-a719-d28be5007a2b">
+<span class="eqno">(2.16)<a class="headerlink" href="#equation-d2a11a20-8b8e-4519-a719-d28be5007a2b" title="Permalink to this equation">#</a></span>\[\begin{equation}m = \frac{y_{2} - y_{1}}{x_{2} - x_{1}} \end{equation}\]</div>
+<p>Although this form of the equation is a little more verbose, it gives us a clue as to how we calculate slope. What we need is any two ordered pairs of x,y values for the line - for example, we know that our line passes through the following two points:</p>
+<ul class="simple">
+<li><p>(0,-2)</p></li>
+<li><p>(6,7)</p></li>
+</ul>
+<p>We can take the x and y values from the first pair, and label them x<sub>1</sub> and y<sub>1</sub>; and then take the x and y values from the second point and label them x<sub>2</sub> and y<sub>2</sub>. Then we can plug those into our slope equation:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-88370d39-05f1-486d-a148-875ba223c3a2">
+<span class="eqno">(2.17)<a class="headerlink" href="#equation-88370d39-05f1-486d-a148-875ba223c3a2" title="Permalink to this equation">#</a></span>\[\begin{equation}m = \frac{7 - -2}{6 - 0} \end{equation}\]</div>
+<p>This is the same as:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-b389ed29-f152-41cb-8023-66a7c98343df">
+<span class="eqno">(2.18)<a class="headerlink" href="#equation-b389ed29-f152-41cb-8023-66a7c98343df" title="Permalink to this equation">#</a></span>\[\begin{equation}m = \frac{7 + 2}{6 - 0} \end{equation}\]</div>
+<p>That gives us the result <sup>9</sup>/<sub>6</sub> which is 1<sup>1</sup>/<sub>2</sub> or 1.5 .</p>
+<p>So what does that actually mean? Well, it tells us that for every change of <strong>1</strong> in x, <strong>y</strong> changes by 1<sup>1</sup>/<sub>2</sub> or 1.5. So if we start from any point on the line and move one unit to the right (along the X axis), we’ll need to move 1.5 units up (along the Y axis) to get back to the line.</p>
+<p>You can plot the slope onto the original line with the following Python code to verify it fits:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;grey&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">()</span>
+
+<span class="c1"># set the slope</span>
+<span class="n">m</span> <span class="o">=</span> <span class="mf">1.5</span>
+
+<span class="c1"># get the y-intercept</span>
+<span class="n">yInt</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span>
+
+<span class="c1"># plot the slope from the y-intercept for 1x</span>
+<span class="n">mx</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">my</span> <span class="o">=</span> <span class="p">[</span><span class="n">yInt</span><span class="p">,</span> <span class="n">yInt</span> <span class="o">+</span> <span class="n">m</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">mx</span><span class="p">,</span><span class="n">my</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="slope-intercept-form">
+<h3><span class="section-number">2.3.1. </span>Slope-Intercept Form<a class="headerlink" href="#slope-intercept-form" title="Link to this heading">#</a></h3>
+<p>One of the great things about algebraic expressions is that you can write the same equation in multiple ways, or <em>forms</em>. The <em>slope-intercept form</em> is a specific way of writing a 2-variable linear equation so that the equation definition includes the slope and y-intercept. The generalised slope-intercept form looks like this:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-57884817-fc1f-4a8f-8eee-ceacbfca2b3c">
+<span class="eqno">(2.19)<a class="headerlink" href="#equation-57884817-fc1f-4a8f-8eee-ceacbfca2b3c" title="Permalink to this equation">#</a></span>\[\begin{equation}y = mx + b \end{equation}\]</div>
+<p>In this notation, <em><strong>m</strong></em> is the slope and <em><strong>b</strong></em> is the y-intercept.</p>
+<p>For example, let’s look at the solved linear equation we’ve been working with so far in this section:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-45edc00a-3eed-443f-85f8-28a2c568e138">
+<span class="eqno">(2.20)<a class="headerlink" href="#equation-45edc00a-3eed-443f-85f8-28a2c568e138" title="Permalink to this equation">#</a></span>\[\begin{equation}y = \frac{3x - 4}{2} \end{equation}\]</div>
+<p>Now that we know the slope and y-intercept for the line that this equation defines, we can rewrite the equation as:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-f64ea6a2-69c0-466d-b322-88e8ed3cd7a8">
+<span class="eqno">(2.21)<a class="headerlink" href="#equation-f64ea6a2-69c0-466d-b322-88e8ed3cd7a8" title="Permalink to this equation">#</a></span>\[\begin{equation}y = 1\frac{1}{2}x + -2 \end{equation}\]</div>
+<p>You can see intuitively that this is true. In our original form of the equation, to find y we multiply x by three, subtract 4, and divide by two - in other words, x is half of 3x - 4; which is 1.5x - 2. So these equations are equivalent, but the slope-intercept form has the advantages of being simpler, and including two key pieces of information we need to plot the line represented by the equation. We know the y-intecept that the line passes through (0, -2), and we know the slope of the line (for every x, we add 1.5 to y.</p>
+<p>Let’s recreate our set of test x and y values using the slope-intercept form of the equation, and plot them to prove that this  describes the same line:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="c1"># Create a dataframe with an x column containing values from -10 to 10</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="p">({</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">)})</span>
+
+<span class="c1"># Define slope and y-intercept</span>
+<span class="n">m</span> <span class="o">=</span> <span class="mf">1.5</span>
+<span class="n">yInt</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span>
+
+<span class="c1"># Add a y column by applying the slope-intercept equation to x</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">m</span><span class="o">*</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">yInt</span>
+
+<span class="c1"># Plot the line</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;grey&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">()</span>
+
+<span class="c1"># label the y-intercept</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;y-intercept&#39;</span><span class="p">,(</span><span class="mi">0</span><span class="p">,</span><span class="n">yInt</span><span class="p">))</span>
+
+<span class="c1"># plot the slope from the y-intercept for 1x</span>
+<span class="n">mx</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">my</span> <span class="o">=</span> <span class="p">[</span><span class="n">yInt</span><span class="p">,</span> <span class="n">yInt</span> <span class="o">+</span> <span class="n">m</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">mx</span><span class="p">,</span><span class="n">my</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./01 Equations, Graphs and Fucntions"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="01-01-Introduction%20to%20Equations.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>Getting Started with Equations</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="01-03-Systems%20of%20Equations.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>Systems of Equations</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-a-linear-equation">2.1. Solving a Linear Equation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intercepts">2.2. Intercepts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#slope">2.3. Slope</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#slope-intercept-form">2.3.1. Slope-Intercept Form</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By n03an
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

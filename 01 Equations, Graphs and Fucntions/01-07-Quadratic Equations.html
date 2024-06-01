@@ -1,0 +1,1265 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>7. Quadratic Equations &#8212; Math for ML Book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '01 Equations, Graphs and Fucntions/01-07-Quadratic Equations';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="8. Functions" href="01-08-Functions.html" />
+    <link rel="prev" title="6. Factorization" href="01-06-Factorization.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Math for ML Book - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Math for ML Book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to Math for Machine Learning Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">01 Equations, Graphs and Fucntions</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01-01-Introduction%20to%20Equations.html">1. Getting Started with Equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01-02-Linear%20Equations.html">2. Linear Equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01-03-Systems%20of%20Equations.html">3. Systems of Equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01-04-Exponentials%20Radicals%20and%20Logarithms.html">4. Exponentials, Radicals, and Logs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01-05-Polynomials.html">5. Polynomials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01-06-Factorization.html">6. Factorization</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">7. Quadratic Equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01-08-Functions.html">8. Functions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">02 Derivatives and Optimization</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../02%20%20Derivatives%20and%20Optimization/02-01-Rate%20of%20Change.html">9. Rate of Change</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/N0-man/math-for-machine-learning" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/N0-man/math-for-machine-learning/issues/new?title=Issue%20on%20page%20%2F01 Equations, Graphs and Fucntions/01-07-Quadratic Equations.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/01 Equations, Graphs and Fucntions/01-07-Quadratic Equations.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Quadratic Equations</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parabola-vertex-and-line-of-symmetry">7.1. Parabola Vertex and Line of Symmetry</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parabola-intercepts">7.2. Parabola Intercepts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-quadratics-using-the-square-root-method">7.3. Solving Quadratics Using the Square Root Method</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-quadratics-using-the-completing-the-square-method">7.4. Solving Quadratics Using the Completing the Square Method</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vertex-form">7.5. Vertex Form</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shortcuts-for-solving-quadratic-equations">7.6. Shortcuts for Solving Quadratic Equations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-the-vertex-from-standard-form">7.6.1. Calculating the Vertex from Standard Form</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-quadratic-formula">7.6.2. The Quadratic Formula</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="quadratic-equations">
+<h1><span class="section-number">7. </span>Quadratic Equations<a class="headerlink" href="#quadratic-equations" title="Link to this heading">#</a></h1>
+<p>Consider the following equation:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-219dc495-0b63-479a-aa49-6a0e919aa792">
+<span class="eqno">(7.1)<a class="headerlink" href="#equation-219dc495-0b63-479a-aa49-6a0e919aa792" title="Permalink to this equation">#</a></span>\[\begin{equation}y = 2(x - 1)(x + 2)\end{equation}\]</div>
+<p>If you multiply out the factored <em><strong>x</strong></em> expressions, this equates to:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-144a8706-a25c-4f23-8957-de6eb88d6c43">
+<span class="eqno">(7.2)<a class="headerlink" href="#equation-144a8706-a25c-4f23-8957-de6eb88d6c43" title="Permalink to this equation">#</a></span>\[\begin{equation}y = 2x^{2} + 2x - 4\end{equation}\]</div>
+<p>Note that the highest ordered term includes a squared variable (x<sup>2</sup>).</p>
+<p>Let’s graph this equation for a range of <em><strong>x</strong></em> values:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># Create a dataframe with an x column containing values to plot</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="p">({</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">)})</span>
+
+<span class="c1"># Add a y column by applying the quadratic equation to x</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="mi">4</span>
+
+<span class="c1"># Plot the line</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;grey&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1"># Create a dataframe with an x column containing values to plot</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="p">({</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">)})</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;pandas&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that the graph shows a <em>parabola</em>, which is an arc-shaped line that reflects the x and y values calculated for the equation.</p>
+<p>Now let’s look at another equation that includes an <em><strong>x<sup>2</sup></strong></em> term:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-9f39143f-598c-4969-b5b7-f8a87205c62f">
+<span class="eqno">(7.3)<a class="headerlink" href="#equation-9f39143f-598c-4969-b5b7-f8a87205c62f" title="Permalink to this equation">#</a></span>\[\begin{equation}y = -2x^{2} + 6x + 7\end{equation}\]</div>
+<p>What does that look like as a graph?:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># Create a dataframe with an x column containing values to plot</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="p">({</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span> <span class="mi">12</span><span class="p">)})</span>
+
+<span class="c1"># Add a y column by applying the quadratic equation to x</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">6</span><span class="o">*</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="mi">7</span>
+
+<span class="c1"># Plot the line</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;grey&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Again, the graph shows a parabola, but this time instead of being open at the top, the parabola is open at the bottom.</p>
+<p>Equations that assign a value to <em><strong>y</strong></em> based on an expression that includes a squared value for <em><strong>x</strong></em> create parabolas. If the relationship between <em><strong>y</strong></em> and <em><strong>x</strong></em> is such that <em><strong>y</strong></em> is a <em>positive</em> multiple of the <em><strong>x<sup>2</sup></strong></em> term, the parabola will be open at the top; when <em><strong>y</strong></em> is a <em>negative</em> multiple of the <em><strong>x<sup>2</sup></strong></em> term, then the parabola will be open at the bottom.</p>
+<p>These kinds of equations are known as <em>quadratic</em> equations, and they have some interesting characteristics. There are several ways quadratic equations can be written, but the <em>standard form</em> for quadratic equation is:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-12537ebb-ed67-40e7-a1fb-d9fd2b373262">
+<span class="eqno">(7.4)<a class="headerlink" href="#equation-12537ebb-ed67-40e7-a1fb-d9fd2b373262" title="Permalink to this equation">#</a></span>\[\begin{equation}y = ax^{2} + bx + c\end{equation}\]</div>
+<p>Where <em><strong>a</strong></em>, <em><strong>b</strong></em>, and <em><strong>c</strong></em> are numeric coefficients or constants.</p>
+<p>Let’s start by examining the parabolas generated by quadratic equations in more detail.</p>
+<section id="parabola-vertex-and-line-of-symmetry">
+<h2><span class="section-number">7.1. </span>Parabola Vertex and Line of Symmetry<a class="headerlink" href="#parabola-vertex-and-line-of-symmetry" title="Link to this heading">#</a></h2>
+<p>Parabolas are symmetrical, with x and y values converging exponentially towards the highest point (in the case of a downward opening parabola) or lowest point (in the case of an upward opening parabola). The point where the parabola meets the line of symmetry is known as the <em>vertex</em>.</p>
+<p>Run the following cell to see the line of symmetry and vertex for the two parabolas described previously (don’t worry about the calculations used to find the line of symmetry and vertex - we’ll explore that later):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+
+<span class="k">def</span> <span class="nf">plot_parabola</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
+    <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+    <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+    <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+    
+    <span class="c1"># get the x value for the line of symmetry</span>
+    <span class="n">vx</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="n">b</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">a</span><span class="p">)</span>
+    
+    <span class="c1"># get the y value when x is at the line of symmetry</span>
+    <span class="n">vy</span> <span class="o">=</span> <span class="n">a</span><span class="o">*</span><span class="n">vx</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">b</span><span class="o">*</span><span class="n">vx</span> <span class="o">+</span> <span class="n">c</span>
+
+    <span class="c1"># Create a dataframe with an x column containing values from x-10 to x+10</span>
+    <span class="n">minx</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">vx</span> <span class="o">-</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="n">maxx</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">vx</span> <span class="o">+</span> <span class="mi">11</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="p">({</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="nb">range</span><span class="p">(</span><span class="n">minx</span><span class="p">,</span> <span class="n">maxx</span><span class="p">)})</span>
+
+    <span class="c1"># Add a y column by applying the quadratic equation to x</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="o">*</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">b</span> <span class="o">*</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">c</span>
+
+    <span class="c1"># get min and max y values</span>
+    <span class="n">miny</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+    <span class="n">maxy</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+
+    <span class="c1"># Plot the line</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;grey&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">()</span>
+
+    <span class="c1"># plot the line of symmetry</span>
+    <span class="n">sx</span> <span class="o">=</span> <span class="p">[</span><span class="n">vx</span><span class="p">,</span> <span class="n">vx</span><span class="p">]</span>
+    <span class="n">sy</span> <span class="o">=</span> <span class="p">[</span><span class="n">miny</span><span class="p">,</span> <span class="n">maxy</span><span class="p">]</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sx</span><span class="p">,</span><span class="n">sy</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;magenta&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Annotate the vertex</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">vx</span><span class="p">,</span><span class="n">vy</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;vertex&#39;</span><span class="p">,(</span><span class="n">vx</span><span class="p">,</span> <span class="n">vy</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="n">vx</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="n">vy</span> <span class="o">+</span> <span class="mi">5</span><span class="p">)</span><span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">a</span><span class="p">)))</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+
+<span class="n">plot_parabola</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">)</span>   
+
+<span class="n">plot_parabola</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="parabola-intercepts">
+<h2><span class="section-number">7.2. </span>Parabola Intercepts<a class="headerlink" href="#parabola-intercepts" title="Link to this heading">#</a></h2>
+<p>Recall that linear equations create lines that intersect the <strong>x</strong> and <strong>y</strong> axis of a graph, and we call the points where these intersections occur <em>intercepts</em>. Now look at the graphs of the parabolas we’ve worked with so far. Note that these parabolas both have a y-intercept; a point where the line intersects the y axis of the graph (in other words, when x is 0). However, note that the parabolas have <em>two</em> x-intercepts; in other words there are two points at which the line crosses the x axis (and y is 0). Additionally, imagine a downward opening parabola with its vertex at -1, -1. This is perfectly possible, and the line would never have an x value greater than -1, so it would have <em>no</em> x-intercepts.</p>
+<p>Regardless of whether the parabola crosses the x axis or not, other than the vertex, for every <em><strong>y</strong></em> point in the parabola, there are <em>two</em> <em><strong>x</strong></em> points; one on the right (or positive) side of the axis of symmetry, and one of the left (or negative) side. The implications of this are what make quadratic equations so interesting. When we solve the equation for <em><strong>x</strong></em>, there are <em>two</em> correct answers.</p>
+<p>Let’s take a look at an example to demonstrate this. Let’s return to the first of our quadratic equations, and we’ll look at it in its <em>factored</em> form:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-f75c59ba-c45d-459f-9d0a-c270aafb1982">
+<span class="eqno">(7.5)<a class="headerlink" href="#equation-f75c59ba-c45d-459f-9d0a-c270aafb1982" title="Permalink to this equation">#</a></span>\[\begin{equation}y = 2(x - 1)(x + 2)\end{equation}\]</div>
+<p>Now, let’s solve this equation for a <em><strong>y</strong></em> value of 0. We can restate the equation like this:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-873fd584-e552-4bfd-ac47-a7c420eb1ef0">
+<span class="eqno">(7.6)<a class="headerlink" href="#equation-873fd584-e552-4bfd-ac47-a7c420eb1ef0" title="Permalink to this equation">#</a></span>\[\begin{equation}2(x - 1)(x + 2) = 0\end{equation}\]</div>
+<p>The equation is the product of two expressions <strong>2(x - 1)</strong> and <strong>(x + 2)</strong>. In this case, we know that the product of these expressions is 0, so logically <em>one or both of the expressions must return 0</em>.</p>
+<p>Let’s try the first one:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-e38ab710-056b-4005-a0c1-f32c52e1fd24">
+<span class="eqno">(7.7)<a class="headerlink" href="#equation-e38ab710-056b-4005-a0c1-f32c52e1fd24" title="Permalink to this equation">#</a></span>\[\begin{equation}2(x - 1) = 0\end{equation}\]</div>
+<p>If we distrbute this, we get:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-f8335882-f68c-44f1-ab13-8264489381a2">
+<span class="eqno">(7.8)<a class="headerlink" href="#equation-f8335882-f68c-44f1-ab13-8264489381a2" title="Permalink to this equation">#</a></span>\[\begin{equation}2x - 2 = 0\end{equation}\]</div>
+<p>This simplifies to:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-16faafa9-c01c-4a8e-9041-84c003ab0078">
+<span class="eqno">(7.9)<a class="headerlink" href="#equation-16faafa9-c01c-4a8e-9041-84c003ab0078" title="Permalink to this equation">#</a></span>\[\begin{equation}2x = 2\end{equation}\]</div>
+<p>Which gives us a value for <em>x</em> of <strong>1</strong>.</p>
+<p>Now let’s try the other expression:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-0988f3b8-59cf-4f74-beaa-5036c5900eaa">
+<span class="eqno">(7.10)<a class="headerlink" href="#equation-0988f3b8-59cf-4f74-beaa-5036c5900eaa" title="Permalink to this equation">#</a></span>\[\begin{equation}x + 2 = 0\end{equation}\]</div>
+<p>This gives us a value for <em>x</em> of <strong>-2</strong>.</p>
+<p>So, when <em>y</em> is <strong>0</strong>, <em>x</em> is <strong>-2</strong> or <strong>1</strong>. Let’s plot these points on our parabola:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># Assign the calculated x values</span>
+<span class="n">x1</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span>
+<span class="n">x2</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="c1"># Create a dataframe with an x column containing some values to plot</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="p">({</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="nb">range</span><span class="p">(</span><span class="n">x1</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="n">x2</span><span class="o">+</span><span class="mi">6</span><span class="p">)})</span>
+
+<span class="c1"># Add a y column by applying the quadratic equation to x</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Get x at the line of symmetry (halfway between x1 and x2)</span>
+<span class="n">vx</span> <span class="o">=</span> <span class="p">(</span><span class="n">x1</span> <span class="o">+</span> <span class="n">x2</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+
+<span class="c1"># Get y when x is at the line of symmetry</span>
+<span class="n">vy</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">vx</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">vx</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># get min and max y values</span>
+<span class="n">miny</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+<span class="n">maxy</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+
+<span class="c1"># Plot the line</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;grey&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">()</span>
+
+<span class="c1"># Plot calculated x values for y = 0</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">([</span><span class="n">x1</span><span class="p">,</span><span class="n">x2</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;x1&#39;</span><span class="p">,(</span><span class="n">x1</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;x2&#39;</span><span class="p">,(</span><span class="n">x2</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+
+<span class="c1"># plot the line of symmetry</span>
+<span class="n">sx</span> <span class="o">=</span> <span class="p">[</span><span class="n">vx</span><span class="p">,</span> <span class="n">vx</span><span class="p">]</span>
+<span class="n">sy</span> <span class="o">=</span> <span class="p">[</span><span class="n">miny</span><span class="p">,</span> <span class="n">maxy</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sx</span><span class="p">,</span><span class="n">sy</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;magenta&#39;</span><span class="p">)</span>
+
+<span class="c1"># Annotate the vertex</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">vx</span><span class="p">,</span><span class="n">vy</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;vertex&#39;</span><span class="p">,(</span><span class="n">vx</span><span class="p">,</span> <span class="n">vy</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="n">vx</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="n">vy</span> <span class="o">-</span> <span class="mi">5</span><span class="p">)))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>So from the plot, we can see that both of the values we calculated for <em><strong>x</strong></em> align with the parabola when <em><strong>y</strong></em> is 0. Additionally, because the parabola is symmetrical, we know that every pair of <em><strong>x</strong></em> values for each <em><strong>y</strong></em> value will be equidistant from the line of symmetry, so we can calculate the <em><strong>x</strong></em> value for the line of symmetry as the average of the <em><strong>x</strong></em> values for any value of <em><strong>y</strong></em>. This in turn means that we know the <em><strong>x</strong></em> coordinate for the vertex (it’s on the line of symmetry), and we can use the quadratic equation to calculate <em><strong>y</strong></em> for this point.</p>
+</section>
+<section id="solving-quadratics-using-the-square-root-method">
+<h2><span class="section-number">7.3. </span>Solving Quadratics Using the Square Root Method<a class="headerlink" href="#solving-quadratics-using-the-square-root-method" title="Link to this heading">#</a></h2>
+<p>The technique we just looked at makes it easy to calculate the two possible values for <em><strong>x</strong></em> when <em><strong>y</strong></em> is 0 if the equation is presented as the product two expressions. If the equation is in standard form, and it can be factored, you could do the necessary manipulation to restate it as the product of two expressions. Otherwise, you can calculate the possible values for x by applying a different method that takes advantage of the relationship between squared values and the square root.</p>
+<p>Let’s consider this equation:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-cc4563df-8618-403b-9b79-56f6061d2569">
+<span class="eqno">(7.11)<a class="headerlink" href="#equation-cc4563df-8618-403b-9b79-56f6061d2569" title="Permalink to this equation">#</a></span>\[\begin{equation}y = 3x^{2} - 12\end{equation}\]</div>
+<p>Note that this is in the standard quadratic form, but there is no <em>b</em> term; in other words, there’s no term that contains a coeffecient for  <em><strong>x</strong></em> to the first power. This type of equation can be easily solved using the square root method. Let’s restate it so we’re solving for <em><strong>x</strong></em> when <em><strong>y</strong></em> is 0:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-adc07edc-d66b-4058-9dd3-fb54365ea048">
+<span class="eqno">(7.12)<a class="headerlink" href="#equation-adc07edc-d66b-4058-9dd3-fb54365ea048" title="Permalink to this equation">#</a></span>\[\begin{equation}3x^{2} - 12 = 0\end{equation}\]</div>
+<p>The first thing we need to do is to isolate the <em><strong>x<sup>2</sup></strong></em> term, so we’ll remove the constant on the left by adding 12 to both sides:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-cb19f1c0-4bc3-4b87-b63b-d0528d8bb9dd">
+<span class="eqno">(7.13)<a class="headerlink" href="#equation-cb19f1c0-4bc3-4b87-b63b-d0528d8bb9dd" title="Permalink to this equation">#</a></span>\[\begin{equation}3x^{2} = 12\end{equation}\]</div>
+<p>Then we’ll divide both sides by 3 to isolate x<sup>2</sup>:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-578ec5ba-42ae-4efb-9377-bfac98e54aae">
+<span class="eqno">(7.14)<a class="headerlink" href="#equation-578ec5ba-42ae-4efb-9377-bfac98e54aae" title="Permalink to this equation">#</a></span>\[\begin{equation}x^{2} = 4\end{equation}\]</div>
+<p>No we can isolate <em><strong>x</strong></em> by taking the square root of both sides. However, there’s an additional consideration because this is a quadratic equation. The <em><strong>x</strong></em> variable can have two possibe values, so we must calculate the <em>principle</em> and <em>negative</em> square roots of the expression on the right:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-fff5f26e-12c0-42c9-9094-164ead014765">
+<span class="eqno">(7.15)<a class="headerlink" href="#equation-fff5f26e-12c0-42c9-9094-164ead014765" title="Permalink to this equation">#</a></span>\[\begin{equation}x = \pm\sqrt{4}\end{equation}\]</div>
+<p>The principle square root of 4 is 2 (because 2<sup>2</sup> is 4), and the corresponding negative root is -2 (because -2<sup>2</sup> is also 4); so <em>x</em> is <strong>2</strong> or <strong>-2</strong>.</p>
+<p>Let’s see this in Python, and use the results to calculate and plot the parabola with its line of symmetry and vertex:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">math</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">x1</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="o">-</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">y</span> <span class="o">+</span> <span class="mi">12</span> <span class="o">/</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">x2</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">y</span> <span class="o">+</span> <span class="mi">12</span> <span class="o">/</span> <span class="mi">3</span><span class="p">))</span>
+
+<span class="c1"># Create a dataframe with an x column containing some values to plot</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="p">({</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="nb">range</span><span class="p">(</span><span class="n">x1</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="n">x2</span><span class="o">+</span><span class="mi">11</span><span class="p">)})</span>
+
+<span class="c1"># Add a y column by applying the quadratic equation to x</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span><span class="o">*</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">12</span>
+
+<span class="c1"># Get x at the line of symmetry (halfway between x1 and x2)</span>
+<span class="n">vx</span> <span class="o">=</span> <span class="p">(</span><span class="n">x1</span> <span class="o">+</span> <span class="n">x2</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+
+<span class="c1"># Get y when x is at the line of symmetry</span>
+<span class="n">vy</span> <span class="o">=</span> <span class="mi">3</span><span class="o">*</span><span class="n">vx</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">12</span>
+
+<span class="c1"># get min and max y values</span>
+<span class="n">miny</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+<span class="n">maxy</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+
+<span class="c1"># Plot the line</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;grey&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">()</span>
+
+<span class="c1"># Plot calculated x values for y = 0</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">([</span><span class="n">x1</span><span class="p">,</span><span class="n">x2</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;x1&#39;</span><span class="p">,(</span><span class="n">x1</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;x2&#39;</span><span class="p">,(</span><span class="n">x2</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+
+<span class="c1"># plot the line of symmetry</span>
+<span class="n">sx</span> <span class="o">=</span> <span class="p">[</span><span class="n">vx</span><span class="p">,</span> <span class="n">vx</span><span class="p">]</span>
+<span class="n">sy</span> <span class="o">=</span> <span class="p">[</span><span class="n">miny</span><span class="p">,</span> <span class="n">maxy</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sx</span><span class="p">,</span><span class="n">sy</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;magenta&#39;</span><span class="p">)</span>
+
+<span class="c1"># Annotate the vertex</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">vx</span><span class="p">,</span><span class="n">vy</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;vertex&#39;</span><span class="p">,(</span><span class="n">vx</span><span class="p">,</span> <span class="n">vy</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="n">vx</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="n">vy</span> <span class="o">-</span> <span class="mi">20</span><span class="p">)))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="solving-quadratics-using-the-completing-the-square-method">
+<h2><span class="section-number">7.4. </span>Solving Quadratics Using the Completing the Square Method<a class="headerlink" href="#solving-quadratics-using-the-completing-the-square-method" title="Link to this heading">#</a></h2>
+<p>In quadratic equations where there is a <em>b</em> term; that is, a term containing <strong>x</strong> to the first power, it is impossible to directly calculate the square root. However, with some algebraic manipulation, you can take advantage of the ability to factor a polynomial expression in the form <em>a<sup>2</sup> + 2ab + b<sup>2</sup></em> as a binomial <em>perfect square</em> expression in the form <em>(a + b)<sup>2</sup></em>.</p>
+<p>At first this might seem like some sort of mathematical sleight of hand, but follow through the steps carefull and you’ll see that there’s nothing up my sleeve!</p>
+<p>The underlying basis of this approach is that a trinomial expression like this:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-8ee90632-ddb1-46e4-9734-401243d9dbd0">
+<span class="eqno">(7.16)<a class="headerlink" href="#equation-8ee90632-ddb1-46e4-9734-401243d9dbd0" title="Permalink to this equation">#</a></span>\[\begin{equation}x^{2} + 24x + 12^{2}\end{equation}\]</div>
+<p>Can be factored to this:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-1941b628-b703-4276-8921-6c6fd3094a65">
+<span class="eqno">(7.17)<a class="headerlink" href="#equation-1941b628-b703-4276-8921-6c6fd3094a65" title="Permalink to this equation">#</a></span>\[\begin{equation}(x + 12)^{2}\end{equation}\]</div>
+<p>OK, so how does this help us solve a quadratic equation? Well, let’s look at an example:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-c8d9f9d5-e61a-4429-95b4-3931397a13fb">
+<span class="eqno">(7.18)<a class="headerlink" href="#equation-c8d9f9d5-e61a-4429-95b4-3931397a13fb" title="Permalink to this equation">#</a></span>\[\begin{equation}y = x^{2} + 6x - 7\end{equation}\]</div>
+<p>Let’s start as we’ve always done so far by restating the equation to solve <em><strong>x</strong></em> for a <em><strong>y</strong></em> value of 0:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-2147ad2a-81dd-4c6a-9f16-e2e63dfc3ae8">
+<span class="eqno">(7.19)<a class="headerlink" href="#equation-2147ad2a-81dd-4c6a-9f16-e2e63dfc3ae8" title="Permalink to this equation">#</a></span>\[\begin{equation}x^{2} + 6x - 7 = 0\end{equation}\]</div>
+<p>Now we can move the constant term to the right by adding 7 to both sides:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-9a7c830a-ca7d-4028-b92f-79fdf2e48532">
+<span class="eqno">(7.20)<a class="headerlink" href="#equation-9a7c830a-ca7d-4028-b92f-79fdf2e48532" title="Permalink to this equation">#</a></span>\[\begin{equation}x^{2} + 6x = 7\end{equation}\]</div>
+<p>OK, now let’s look at the expression on the left: <em>x<sup>2</sup> + 6x</em>. We can’t take the square root of this, but we can turn it into a trinomial that will factor into a perfect square by adding a squared constant. The question is, what should that constant be? Well, we know that we’re looking for an expression like <em>x<sup>2</sup> + 2<strong>c</strong>x + <strong>c</strong><sup>2</sup></em>, so our constant <strong>c</strong> is half of the coefficient we currently have for <em><strong>x</strong></em>. This is <strong>6</strong>, making our constant <strong>3</strong>, which when squared is <strong>9</strong> So we can create a trinomial expression that will easily factor to a perfect square by adding 9; giving us the expression <em>x<sup>2</sup> + 6x + 9</em>.</p>
+<p>However, we can’t just add something to one side without also adding it to the other, so our equation becomes:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-d65bee25-6b28-4c12-afe8-a70eaf3667bb">
+<span class="eqno">(7.21)<a class="headerlink" href="#equation-d65bee25-6b28-4c12-afe8-a70eaf3667bb" title="Permalink to this equation">#</a></span>\[\begin{equation}x^{2} + 6x + 9 = 16\end{equation}\]</div>
+<p>So, how does that help? Well, we can now factor the trinomial expression as a perfect square binomial expression:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-f2ea6fc2-1fbb-4941-8a9a-f73d049c628f">
+<span class="eqno">(7.22)<a class="headerlink" href="#equation-f2ea6fc2-1fbb-4941-8a9a-f73d049c628f" title="Permalink to this equation">#</a></span>\[\begin{equation}(x + 3)^{2} = 16\end{equation}\]</div>
+<p>And now, we can use the square root method to find x + 3:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-afd3c060-3122-4edf-b497-198bf1341e44">
+<span class="eqno">(7.23)<a class="headerlink" href="#equation-afd3c060-3122-4edf-b497-198bf1341e44" title="Permalink to this equation">#</a></span>\[\begin{equation}x + 3 =\pm\sqrt{16}\end{equation}\]</div>
+<p>So, x + 3 is <strong>-4</strong> or <strong>4</strong>. We isolate <em><strong>x</strong></em> by subtracting 3 from both sides, so <em><strong>x</strong></em> is <strong>-7</strong> or <strong>1</strong>:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-6f0d3fda-47cf-49f3-802f-fea4b5164b50">
+<span class="eqno">(7.24)<a class="headerlink" href="#equation-6f0d3fda-47cf-49f3-802f-fea4b5164b50" title="Permalink to this equation">#</a></span>\[\begin{equation}x = -7, 1\end{equation}\]</div>
+<p>Let’s see what the parabola for this equation looks like in Python:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">math</span>
+
+<span class="n">x1</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="o">-</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span> <span class="o">-</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">x2</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span> <span class="o">-</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="c1"># Create a dataframe with an x column containing some values to plot</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="p">({</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="nb">range</span><span class="p">(</span><span class="n">x1</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="n">x2</span><span class="o">+</span><span class="mi">11</span><span class="p">)})</span>
+
+<span class="c1"># Add a y column by applying the quadratic equation to x</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">((</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="mi">16</span>
+
+<span class="c1"># Get x at the line of symmetry (halfway between x1 and x2)</span>
+<span class="n">vx</span> <span class="o">=</span> <span class="p">(</span><span class="n">x1</span> <span class="o">+</span> <span class="n">x2</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+
+<span class="c1"># Get y when x is at the line of symmetry</span>
+<span class="n">vy</span> <span class="o">=</span> <span class="p">((</span><span class="n">vx</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="mi">16</span>
+
+<span class="c1"># get min and max y values</span>
+<span class="n">miny</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+<span class="n">maxy</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+
+<span class="c1"># Plot the line</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;grey&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">()</span>
+
+<span class="c1"># Plot calculated x values for y = 0</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">([</span><span class="n">x1</span><span class="p">,</span><span class="n">x2</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;x1&#39;</span><span class="p">,(</span><span class="n">x1</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;x2&#39;</span><span class="p">,(</span><span class="n">x2</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+
+<span class="c1"># plot the line of symmetry</span>
+<span class="n">sx</span> <span class="o">=</span> <span class="p">[</span><span class="n">vx</span><span class="p">,</span> <span class="n">vx</span><span class="p">]</span>
+<span class="n">sy</span> <span class="o">=</span> <span class="p">[</span><span class="n">miny</span><span class="p">,</span> <span class="n">maxy</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sx</span><span class="p">,</span><span class="n">sy</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;magenta&#39;</span><span class="p">)</span>
+
+<span class="c1"># Annotate the vertex</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">vx</span><span class="p">,</span><span class="n">vy</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;vertex&#39;</span><span class="p">,(</span><span class="n">vx</span><span class="p">,</span> <span class="n">vy</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="n">vx</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="n">vy</span> <span class="o">-</span> <span class="mi">10</span><span class="p">)))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="vertex-form">
+<h2><span class="section-number">7.5. </span>Vertex Form<a class="headerlink" href="#vertex-form" title="Link to this heading">#</a></h2>
+<p>Let’s look at another example of a quadratic equation in standard form:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-8d8f25c0-49e4-4de7-b840-e17fdd2f1730">
+<span class="eqno">(7.25)<a class="headerlink" href="#equation-8d8f25c0-49e4-4de7-b840-e17fdd2f1730" title="Permalink to this equation">#</a></span>\[\begin{equation}y = 2x^{2} - 16x + 2\end{equation}\]</div>
+<p>We can start to solve this by subtracting 2 from both sides to move the constant term from the right to the left:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-0b902928-1ed8-4c72-a3b2-ba3a40b20a5b">
+<span class="eqno">(7.26)<a class="headerlink" href="#equation-0b902928-1ed8-4c72-a3b2-ba3a40b20a5b" title="Permalink to this equation">#</a></span>\[\begin{equation}y - 2 = 2x^{2} - 16x\end{equation}\]</div>
+<p>Now we can factor out the coefficient for x<sup>2</sup>, which is <strong>2</strong>. 2x<sup>2</sup> is 2 • x<sup>2</sup>, and -16x is 2 • 8x:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-7d4bf8b4-ec7c-4956-ad0b-fe754b3c3e67">
+<span class="eqno">(7.27)<a class="headerlink" href="#equation-7d4bf8b4-ec7c-4956-ad0b-fe754b3c3e67" title="Permalink to this equation">#</a></span>\[\begin{equation}y - 2 = 2(x^{2} - 8x)\end{equation}\]</div>
+<p>Now we’re ready to complete the square, so we add the square of half of the -8x coefficient on the right side to the parenthesis. Half of -8 is -4, and -4<sup>2</sup> is 16, so the right side of the equation becomes <em>2(x<sup>2</sup> - 8x + 16)</em>. Of course, we can’t add something to one side of the equation without also adding it to the other side, and we’ve just added 2 • 16 (which is 32) to the right, so we must also add that to the left.</p>
+<div class="amsmath math notranslate nohighlight" id="equation-4856318f-2e07-4c96-aca7-8428637c5422">
+<span class="eqno">(7.28)<a class="headerlink" href="#equation-4856318f-2e07-4c96-aca7-8428637c5422" title="Permalink to this equation">#</a></span>\[\begin{equation}y - 2 + 32 = 2(x^{2} - 8x + 16)\end{equation}\]</div>
+<p>Now we can simplify the left and factor out a perfect square binomial expression on the right:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-9930ec72-e43d-4ea8-aa6d-ac49b3523a11">
+<span class="eqno">(7.29)<a class="headerlink" href="#equation-9930ec72-e43d-4ea8-aa6d-ac49b3523a11" title="Permalink to this equation">#</a></span>\[\begin{equation}y + 30 = 2(x - 4)^{2}\end{equation}\]</div>
+<p>We now have a squared term for <em><strong>x</strong></em>, so we could use the square root method to solve the equation. However, we can also isolate <em><strong>y</strong></em> by subtracting 30 from both sides. So we end up restating the original equation as:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-cba374c7-3f79-4091-b73d-7da1d32d1a0c">
+<span class="eqno">(7.30)<a class="headerlink" href="#equation-cba374c7-3f79-4091-b73d-7da1d32d1a0c" title="Permalink to this equation">#</a></span>\[\begin{equation}y = 2(x - 4)^{2} - 30\end{equation}\]</div>
+<p>Let’s just quickly check our math with Python:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randint</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">16</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mi">4</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">30</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>So we’ve managed to take the expression <em><strong>2x<sup>2</sup> - 16x + 2</strong></em> and change it to <em><strong>2(x - 4)<sup>2</sup> - 30</strong></em>. How does that help?</p>
+<p>Well, when a quadratic equation is stated this way, it’s in <em>vertex form</em>, which is generically described as:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-2a626a1e-f3f6-45f5-a69b-d09b992768cb">
+<span class="eqno">(7.31)<a class="headerlink" href="#equation-2a626a1e-f3f6-45f5-a69b-d09b992768cb" title="Permalink to this equation">#</a></span>\[\begin{equation}y = a(x - h)^{2} + k\end{equation}\]</div>
+<p>The neat thing about this form of the equation is that it tells us the coordinates of the vertex - it’s at <em><strong>h,k</strong></em>.</p>
+<p>So in this case, we know that the vertex of our equation is 4, -30. Moreover, we know that the line of symmetry is at <em><strong>x = 4</strong></em>.</p>
+<p>We can then just use the equation to calculate two more points, and the three points will be enough for us to determine the shape of the parabola. We can simply choose any <em><strong>x</strong></em> value we like and substitute it into the equation to calculate the corresponding <em><strong>y</strong></em> value. For example, let’s calculate <em><strong>y</strong></em> when x is <strong>0</strong>:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-c60a974d-4bae-410f-90ef-58bb3ee98b3f">
+<span class="eqno">(7.32)<a class="headerlink" href="#equation-c60a974d-4bae-410f-90ef-58bb3ee98b3f" title="Permalink to this equation">#</a></span>\[\begin{equation}y = 2(0 - 4)^{2} - 30\end{equation}\]</div>
+<p>When we work through the equation, it gives us the answer <strong>2</strong>, so we know that the point 0, 2 is in our parabola.</p>
+<p>So, we know that the line of symmetry is at <em><strong>x = h</strong></em> (which is 4), and we now know that the <em><strong>y</strong></em> value when <em><strong>x</strong></em> is 0 (<em><strong>h</strong></em> - <em><strong>h</strong></em>) is 2. The <em><strong>y</strong></em> value at the same distance from the line of symmetry in the negative direction will be the same as the value in the positive direction, so when <em><strong>x</strong></em> is <em><strong>h</strong></em> + <em><strong>h</strong></em>, the <em><strong>y</strong></em> value will also be 2.</p>
+<p>The following Python code encapulates all of this in a function that draws and annotates a parabola using only the <em><strong>a</strong></em>, <em><strong>h</strong></em>, and <em><strong>k</strong></em> values from a quadratic equation in vertex form:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_parabola_from_vertex_form</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+    <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+    <span class="kn">import</span> <span class="nn">math</span>
+
+    <span class="c1"># Create a dataframe with an x column a range of x values to plot</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="p">({</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="nb">range</span><span class="p">(</span><span class="n">h</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="n">h</span><span class="o">+</span><span class="mi">11</span><span class="p">)})</span>
+
+    <span class="c1"># Add a y column by applying the quadratic equation to x</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">h</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">k</span>
+
+    <span class="c1"># get min and max y values</span>
+    <span class="n">miny</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+    <span class="n">maxy</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+
+    <span class="c1"># calculate y when x is 0 (h+-h)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">a</span><span class="o">*</span><span class="p">(</span><span class="mi">0</span> <span class="o">-</span> <span class="n">h</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">k</span>
+
+    <span class="c1"># Plot the line</span>
+    <span class="o">%</span><span class="k">matplotlib</span> inline
+    <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;grey&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">()</span>
+
+    <span class="c1"># Plot calculated y values for x = 0 (h-h and h+h)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">([</span><span class="n">h</span><span class="o">-</span><span class="n">h</span><span class="p">,</span> <span class="n">h</span><span class="o">+</span><span class="n">h</span><span class="p">],[</span><span class="n">y</span><span class="p">,</span><span class="n">y</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">h</span><span class="o">-</span><span class="n">h</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;,&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">y</span><span class="p">),(</span><span class="n">h</span><span class="o">-</span><span class="n">h</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">h</span><span class="o">+</span><span class="n">h</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;,&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">y</span><span class="p">),(</span><span class="n">h</span><span class="o">+</span><span class="n">h</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
+
+    <span class="c1"># plot the line of symmetry (x = h)</span>
+    <span class="n">sx</span> <span class="o">=</span> <span class="p">[</span><span class="n">h</span><span class="p">,</span> <span class="n">h</span><span class="p">]</span>
+    <span class="n">sy</span> <span class="o">=</span> <span class="p">[</span><span class="n">miny</span><span class="p">,</span> <span class="n">maxy</span><span class="p">]</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sx</span><span class="p">,</span><span class="n">sy</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;magenta&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Annotate the vertex (h,k)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="n">k</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;v=&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">h</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;,&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">k</span><span class="p">),(</span><span class="n">h</span><span class="p">,</span> <span class="n">k</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="n">h</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="n">k</span> <span class="o">-</span> <span class="mi">10</span><span class="p">)))</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+    
+<span class="c1"># Call the function for the example discussed above</span>
+<span class="n">plot_parabola_from_vertex_form</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">30</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>It’s important to note that the vertex form specifically requires a <em>subtraction</em> operation in the factored perfect square term. For example, consider the following equation in the standard form:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-ac8fc438-f830-4b1a-9993-69ad587b6ff9">
+<span class="eqno">(7.33)<a class="headerlink" href="#equation-ac8fc438-f830-4b1a-9993-69ad587b6ff9" title="Permalink to this equation">#</a></span>\[\begin{equation}y = 3x^{2} + 6x + 2\end{equation}\]</div>
+<p>The steps to solve this are:</p>
+<ol class="arabic simple">
+<li><p>Move the constant to the left side:</p></li>
+</ol>
+<div class="amsmath math notranslate nohighlight" id="equation-405ffd42-ea38-4551-9416-8608a7854230">
+<span class="eqno">(7.34)<a class="headerlink" href="#equation-405ffd42-ea38-4551-9416-8608a7854230" title="Permalink to this equation">#</a></span>\[\begin{equation}y - 2 = 3x^{2} + 6x\end{equation}\]</div>
+<ol class="arabic simple" start="2">
+<li><p>Factor the <em><strong>x</strong></em> expressions on the right:</p></li>
+</ol>
+<div class="amsmath math notranslate nohighlight" id="equation-033e4c69-9c03-40c9-811b-abc92691f548">
+<span class="eqno">(7.35)<a class="headerlink" href="#equation-033e4c69-9c03-40c9-811b-abc92691f548" title="Permalink to this equation">#</a></span>\[\begin{equation}y - 2 = 3(x^{2} + 2x)\end{equation}\]</div>
+<ol class="arabic simple" start="3">
+<li><p>Add the square of half the x coefficient to the right, and the corresponding multiple on the left:</p></li>
+</ol>
+<div class="amsmath math notranslate nohighlight" id="equation-050d07b2-fda3-4622-a680-a26cca72c1f4">
+<span class="eqno">(7.36)<a class="headerlink" href="#equation-050d07b2-fda3-4622-a680-a26cca72c1f4" title="Permalink to this equation">#</a></span>\[\begin{equation}y - 2 + 3 = 3(x^{2} + 2x + 1)\end{equation}\]</div>
+<ol class="arabic simple" start="4">
+<li><p>Factor out a perfect square binomial:</p></li>
+</ol>
+<div class="amsmath math notranslate nohighlight" id="equation-244f2705-326b-4816-b32d-4c45c736d668">
+<span class="eqno">(7.37)<a class="headerlink" href="#equation-244f2705-326b-4816-b32d-4c45c736d668" title="Permalink to this equation">#</a></span>\[\begin{equation}y + 1 = 3(x + 1)^{2}\end{equation}\]</div>
+<ol class="arabic simple" start="5">
+<li><p>Move the constant back to the right side:</p></li>
+</ol>
+<div class="amsmath math notranslate nohighlight" id="equation-c72a54bb-985f-4d18-b3ff-7c0d68ebf779">
+<span class="eqno">(7.38)<a class="headerlink" href="#equation-c72a54bb-985f-4d18-b3ff-7c0d68ebf779" title="Permalink to this equation">#</a></span>\[\begin{equation}y = 3(x + 1)^{2} - 1\end{equation}\]</div>
+<p>To express this in vertex form, we need to convert the addition in the parenthesis to a subtraction:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-1d393131-045b-442e-ae75-5e54ba731073">
+<span class="eqno">(7.39)<a class="headerlink" href="#equation-1d393131-045b-442e-ae75-5e54ba731073" title="Permalink to this equation">#</a></span>\[\begin{equation}y = 3(x - -1)^{2} - 1\end{equation}\]</div>
+<p>Now, we can use the a, h, and k values to define a parabola:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_parabola_from_vertex_form</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="shortcuts-for-solving-quadratic-equations">
+<h2><span class="section-number">7.6. </span>Shortcuts for Solving Quadratic Equations<a class="headerlink" href="#shortcuts-for-solving-quadratic-equations" title="Link to this heading">#</a></h2>
+<p>We’ve spent some time in this notebook discussing how to solve quadratic equations to determine the vertex of a parabola and the <em><strong>x</strong></em> values in relation to <em><strong>y</strong></em>. It’s important to understand the techniques we’ve used, which incude:</p>
+<ul class="simple">
+<li><p>Factoring</p></li>
+<li><p>Calculating the Square Root</p></li>
+<li><p>Completing the Square</p></li>
+<li><p>Using the vertex form of the equation</p></li>
+</ul>
+<p>The underlying algebra for all of these techniques is the same, and this consistent algebra results in some shortcuts that you can memorize to make it easier to solve quadratic equations without going through all of the steps:</p>
+<section id="calculating-the-vertex-from-standard-form">
+<h3><span class="section-number">7.6.1. </span>Calculating the Vertex from Standard Form<a class="headerlink" href="#calculating-the-vertex-from-standard-form" title="Link to this heading">#</a></h3>
+<p>You’ve already seen that converting a quadratic equation to the vertex form makes it easy to identify the vertex coordinates, as they’re encoded as <em><strong>h</strong></em> and <em><strong>k</strong></em> in the equation itself - like this:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-c8674db5-0ea2-45a5-80cf-c18a44697a14">
+<span class="eqno">(7.40)<a class="headerlink" href="#equation-c8674db5-0ea2-45a5-80cf-c18a44697a14" title="Permalink to this equation">#</a></span>\[\begin{equation}y = a(x - \textbf{h})^{2} + \textbf{k}\end{equation}\]</div>
+<p>However, what if you have an equation in standard form?:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-b9d65296-84df-48cc-9413-7b27a3b9e271">
+<span class="eqno">(7.41)<a class="headerlink" href="#equation-b9d65296-84df-48cc-9413-7b27a3b9e271" title="Permalink to this equation">#</a></span>\[\begin{equation}y = ax^{2} + bx + c\end{equation}\]</div>
+<p>There’s a quick and easy technique you can apply to get the vertex coordinates.</p>
+<ol class="arabic simple">
+<li><p>To find <em><strong>h</strong></em> (which is the x-coordinate of the vertex), apply the following formula:</p></li>
+</ol>
+<div class="amsmath math notranslate nohighlight" id="equation-542db2c1-f8e1-4582-b549-96ef83c57e82">
+<span class="eqno">(7.42)<a class="headerlink" href="#equation-542db2c1-f8e1-4582-b549-96ef83c57e82" title="Permalink to this equation">#</a></span>\[\begin{equation}h = \frac{-b}{2a}\end{equation}\]</div>
+<ol class="arabic simple" start="2">
+<li><p>After you’ve found <em><strong>h</strong></em>, use it in the quadratic equation to solve for <em><strong>k</strong></em>:</p></li>
+</ol>
+<div class="amsmath math notranslate nohighlight" id="equation-1fbadd3d-35ac-4840-a0c0-d29a149e2646">
+<span class="eqno">(7.43)<a class="headerlink" href="#equation-1fbadd3d-35ac-4840-a0c0-d29a149e2646" title="Permalink to this equation">#</a></span>\[\begin{equation}\textbf{k} = a\textbf{h}^{2} + b\textbf{h} + c\end{equation}\]</div>
+<p>For example, here’s the quadratic equation in standard form that we previously converted to the vertex form:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-6b0fc591-decc-4bc8-a075-88dbcb8cdc7e">
+<span class="eqno">(7.44)<a class="headerlink" href="#equation-6b0fc591-decc-4bc8-a075-88dbcb8cdc7e" title="Permalink to this equation">#</a></span>\[\begin{equation}y = 2x^{2} - 16x + 2\end{equation}\]</div>
+<p>To find <em><strong>h</strong></em>, we perform the following calculation:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-4d9b2fda-73af-4c0c-b339-855c2503ec65">
+<span class="eqno">(7.45)<a class="headerlink" href="#equation-4d9b2fda-73af-4c0c-b339-855c2503ec65" title="Permalink to this equation">#</a></span>\[\begin{equation}h = \frac{-b}{2a}\;\;\;\;=\;\;\;\;\frac{-1 \cdot -16}{2\cdot2}\;\;\;\;=\;\;\;\;\frac{16}{4}\;\;\;\;=\;\;\;\;4\end{equation}\]</div>
+<p>Then we simply plug the value we’ve obtained for <em><strong>h</strong></em> into the quadratic equation in order to find <em><strong>k</strong></em>:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-b869cfbe-4c8f-44fe-90b5-6e44b4f0d93f">
+<span class="eqno">(7.46)<a class="headerlink" href="#equation-b869cfbe-4c8f-44fe-90b5-6e44b4f0d93f" title="Permalink to this equation">#</a></span>\[\begin{equation}k = 2\cdot(4^{2}) - 16\cdot4 + 2\;\;\;\;=\;\;\;\;32 - 64 + 2\;\;\;\;=\;\;\;\;-30\end{equation}\]</div>
+<p>Note that a vertex at 4,-30 is also what we previously calculated for the vertex form of the same equation:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-481c8679-1bd9-4828-a83a-881a8cf08767">
+<span class="eqno">(7.47)<a class="headerlink" href="#equation-481c8679-1bd9-4828-a83a-881a8cf08767" title="Permalink to this equation">#</a></span>\[\begin{equation}y = 2(x - 4)^{2} - 30\end{equation}\]</div>
+</section>
+<section id="the-quadratic-formula">
+<h3><span class="section-number">7.6.2. </span>The Quadratic Formula<a class="headerlink" href="#the-quadratic-formula" title="Link to this heading">#</a></h3>
+<p>Another useful formula to remember is the <em>quadratic formula</em>, which makes it easy to calculate values for <em><strong>x</strong></em> when <em><strong>y</strong></em> is <strong>0</strong>; or in other words:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-c8a5abd0-22a1-42c4-8b25-46e00f7533fb">
+<span class="eqno">(7.48)<a class="headerlink" href="#equation-c8a5abd0-22a1-42c4-8b25-46e00f7533fb" title="Permalink to this equation">#</a></span>\[\begin{equation}ax^{2} + bx + c = 0\end{equation}\]</div>
+<p>Here’s the formula:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-76fa1dde-25a0-4fc9-824f-88371245bb0f">
+<span class="eqno">(7.49)<a class="headerlink" href="#equation-76fa1dde-25a0-4fc9-824f-88371245bb0f" title="Permalink to this equation">#</a></span>\[\begin{equation}x = \frac{-b \pm \sqrt{b^{2} - 4ac}}{2a}\end{equation}\]</div>
+<p>Let’s apply that formula to our equation, which you may remember looks like this:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-e07b8f6b-4d2f-4fdd-a561-2f0f8a7c9d18">
+<span class="eqno">(7.50)<a class="headerlink" href="#equation-e07b8f6b-4d2f-4fdd-a561-2f0f8a7c9d18" title="Permalink to this equation">#</a></span>\[\begin{equation}y = 2x^{2} - 16x + 2\end{equation}\]</div>
+<p>OK, let’s plug the <em><strong>a</strong></em>, <em><strong>b</strong></em>, and <em><strong>c</strong></em> variables from our equation into the quadratic formula:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-d529df7a-e964-4eec-9937-6733ded02244">
+<span class="eqno">(7.51)<a class="headerlink" href="#equation-d529df7a-e964-4eec-9937-6733ded02244" title="Permalink to this equation">#</a></span>\[\begin{equation}x = \frac{--16 \pm \sqrt{-16^{2} - 4\cdot2\cdot2}}{2\cdot2}\end{equation}\]</div>
+<p>This simplifes to:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-8d9559cb-233f-43a0-980b-7145ea49bf16">
+<span class="eqno">(7.52)<a class="headerlink" href="#equation-8d9559cb-233f-43a0-980b-7145ea49bf16" title="Permalink to this equation">#</a></span>\[\begin{equation}x = \frac{16 \pm \sqrt{256 - 16}}{4}\end{equation}\]</div>
+<p>This in turn (with the help of a calculator) simplifies to:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-0fc509a0-21cf-4e8b-98fd-3d0254c3692f">
+<span class="eqno">(7.53)<a class="headerlink" href="#equation-0fc509a0-21cf-4e8b-98fd-3d0254c3692f" title="Permalink to this equation">#</a></span>\[\begin{equation}x = \frac{16 \pm 15.491933384829668}{4}\end{equation}\]</div>
+<p>So our positive value for <em><strong>x</strong></em> is:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-176edcc9-961d-496e-acd7-95a9e29370d6">
+<span class="eqno">(7.54)<a class="headerlink" href="#equation-176edcc9-961d-496e-acd7-95a9e29370d6" title="Permalink to this equation">#</a></span>\[\begin{equation}x = \frac{16 + 15.491933384829668}{4}\;\;\;\;=7.872983346207417\end{equation}\]</div>
+<p>And the negative value for <em><strong>x</strong></em> is:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-8b422067-65d9-40a9-a0de-e8d58740f7e2">
+<span class="eqno">(7.55)<a class="headerlink" href="#equation-8b422067-65d9-40a9-a0de-e8d58740f7e2" title="Permalink to this equation">#</a></span>\[\begin{equation}x = \frac{16 - 15.491933384829668}{4}\;\;\;\;=0.12701665379258298\end{equation}\]</div>
+<p>The following Python code uses the vertex formula and the quadtratic formula to calculate the vertex and the -x and +x for y = 0, and then plots the resulting parabola:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_parabola_from_formula</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
+    <span class="kn">import</span> <span class="nn">math</span>
+
+    <span class="c1"># Get vertex</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;CALCULATING THE VERTEX&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;vx = -b / 2a&#39;</span><span class="p">)</span>
+
+    <span class="n">nb</span> <span class="o">=</span> <span class="o">-</span><span class="n">b</span>
+    <span class="n">a2</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">a</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;vx = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">nb</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; / &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">a2</span><span class="p">))</span>
+
+    <span class="n">vx</span> <span class="o">=</span> <span class="o">-</span><span class="n">b</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">a</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;vx = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">vx</span><span class="p">))</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">vy = ax^2 + bx + c&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;vy =&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;(&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">vx</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;^2) + &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;(&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">vx</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;) + &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
+
+    <span class="n">avx2</span> <span class="o">=</span> <span class="n">a</span><span class="o">*</span><span class="n">vx</span><span class="o">**</span><span class="mi">2</span>
+    <span class="n">bvx</span> <span class="o">=</span> <span class="n">b</span><span class="o">*</span><span class="n">vx</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;vy =&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">avx2</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; + &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">bvx</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; + &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
+
+    <span class="n">vy</span> <span class="o">=</span> <span class="n">avx2</span> <span class="o">+</span> <span class="n">bvx</span> <span class="o">+</span> <span class="n">c</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;vy = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">vy</span><span class="p">))</span>
+
+    <span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">v = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">vx</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;,&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">vy</span><span class="p">))</span>
+
+    <span class="c1"># Get +x and -x (showing intermediate calculations)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">CALCULATING -x AND +x FOR y=0&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x = -b +- sqrt(b^2 - 4ac) / 2a&#39;</span><span class="p">)</span>
+
+
+    <span class="n">b2</span> <span class="o">=</span> <span class="n">b</span><span class="o">**</span><span class="mi">2</span>
+    <span class="n">ac4</span> <span class="o">=</span> <span class="mi">4</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="n">c</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">nb</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;+-sqrt(&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">b2</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; - &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">ac4</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;)/&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">a2</span><span class="p">))</span>
+
+    <span class="n">sr</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">b2</span> <span class="o">-</span> <span class="n">ac4</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">nb</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; +- &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">sr</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; / &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">a2</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-x = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">nb</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; - &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">sr</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; / &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">a2</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;+x = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">nb</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; + &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">sr</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; / &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">a2</span><span class="p">))</span>
+
+    <span class="n">posx</span> <span class="o">=</span> <span class="p">(</span><span class="n">nb</span> <span class="o">+</span> <span class="n">sr</span><span class="p">)</span> <span class="o">/</span> <span class="n">a2</span>
+    <span class="n">negx</span> <span class="o">=</span> <span class="p">(</span><span class="n">nb</span> <span class="o">-</span> <span class="n">sr</span><span class="p">)</span> <span class="o">/</span> <span class="n">a2</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-x = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">negx</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;+x = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">posx</span><span class="p">))</span>
+
+
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">PLOTTING THE PARABOLA&#39;</span><span class="p">)</span>
+    <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+    <span class="c1"># Create a dataframe with an x column a range of x values to plot</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="p">({</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="nb">range</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">vx</span><span class="p">)</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">vx</span><span class="p">)</span><span class="o">+</span><span class="mi">11</span><span class="p">)})</span>
+
+    <span class="c1"># Add a y column by applying the quadratic equation to x</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="o">*</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">b</span><span class="o">*</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">c</span>
+
+    <span class="c1"># get min and max y values</span>
+    <span class="n">miny</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+    <span class="n">maxy</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+
+    <span class="c1"># Plot the line</span>
+    <span class="o">%</span><span class="k">matplotlib</span> inline
+    <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;grey&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">()</span>
+
+    <span class="c1"># Plot calculated x values for y = 0</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">([</span><span class="n">negx</span><span class="p">,</span> <span class="n">posx</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;-x=&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">negx</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;,&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="mi">0</span><span class="p">),(</span><span class="n">negx</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="n">negx</span> <span class="o">-</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;+x=&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">posx</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;,&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="mi">0</span><span class="p">),(</span><span class="n">posx</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="n">posx</span> <span class="o">-</span> <span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">))</span>
+
+    <span class="c1"># plot the line of symmetry</span>
+    <span class="n">sx</span> <span class="o">=</span> <span class="p">[</span><span class="n">vx</span><span class="p">,</span> <span class="n">vx</span><span class="p">]</span>
+    <span class="n">sy</span> <span class="o">=</span> <span class="p">[</span><span class="n">miny</span><span class="p">,</span> <span class="n">maxy</span><span class="p">]</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sx</span><span class="p">,</span><span class="n">sy</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;magenta&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Annotate the vertex</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">vx</span><span class="p">,</span><span class="n">vy</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;v=&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">vx</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;,&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">vy</span><span class="p">),(</span><span class="n">vx</span><span class="p">,</span> <span class="n">vy</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="n">vx</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">vy</span> <span class="o">-</span> <span class="mi">10</span><span class="p">))</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    
+
+<span class="n">plot_parabola_from_formula</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">16</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Question from the Quiz</strong></p>
+<p>Find the x and y vertex coordinates for the following quadratic equation</p>
+<div class="amsmath math notranslate nohighlight" id="equation-75337bb2-6ce3-4c63-99e4-4011a18e6f8d">
+<span class="eqno">(7.56)<a class="headerlink" href="#equation-75337bb2-6ce3-4c63-99e4-4011a18e6f8d" title="Permalink to this equation">#</a></span>\[\begin{equation}y = x^{2} -4x + 2\end{equation}\]</div>
+<p>Since the equation is in the standard form</p>
+<div class="amsmath math notranslate nohighlight" id="equation-68b9900a-c4bb-4c36-bef5-54371060f26b">
+<span class="eqno">(7.57)<a class="headerlink" href="#equation-68b9900a-c4bb-4c36-bef5-54371060f26b" title="Permalink to this equation">#</a></span>\[\begin{equation}y = ax^{2} + bx + c\end{equation}\]</div>
+<p>where a=1, b=-4 and c=2</p>
+<p>We can use the simple technique to find the value of h and k</p>
+<ol class="arabic simple">
+<li><p>To find <em><strong>h</strong></em> (which is the x-coordinate of the vertex), apply the following formula:</p></li>
+</ol>
+<div class="amsmath math notranslate nohighlight" id="equation-00b5fcc1-c250-487a-9a9b-acfc36f8a39f">
+<span class="eqno">(7.58)<a class="headerlink" href="#equation-00b5fcc1-c250-487a-9a9b-acfc36f8a39f" title="Permalink to this equation">#</a></span>\[\begin{equation}h = \frac{-b}{2a}\end{equation}\]</div>
+<ol class="arabic simple" start="2">
+<li><p>To find <em><strong>k</strong></em> (which is the y-coordinate of the vertex), apply the following formula:</p></li>
+</ol>
+<div class="amsmath math notranslate nohighlight" id="equation-6e502636-7dfd-41f2-91a0-c96e6f654f8b">
+<span class="eqno">(7.59)<a class="headerlink" href="#equation-6e502636-7dfd-41f2-91a0-c96e6f654f8b" title="Permalink to this equation">#</a></span>\[\begin{equation}\textbf{k} = a\textbf{h}^{2} + b\textbf{h} + c\end{equation}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">b</span> <span class="o">=</span> <span class="o">-</span><span class="mi">4</span>
+<span class="n">c</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="n">h</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">b</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">a</span><span class="p">)</span>
+<span class="n">k</span> <span class="o">=</span> <span class="n">a</span><span class="o">*</span><span class="n">h</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">b</span><span class="o">*</span><span class="n">h</span> <span class="o">+</span> <span class="n">c</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Vertex: (&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">h</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;,&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;)&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./01 Equations, Graphs and Fucntions"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="01-06-Factorization.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">6. </span>Factorization</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="01-08-Functions.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">8. </span>Functions</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parabola-vertex-and-line-of-symmetry">7.1. Parabola Vertex and Line of Symmetry</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parabola-intercepts">7.2. Parabola Intercepts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-quadratics-using-the-square-root-method">7.3. Solving Quadratics Using the Square Root Method</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-quadratics-using-the-completing-the-square-method">7.4. Solving Quadratics Using the Completing the Square Method</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vertex-form">7.5. Vertex Form</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shortcuts-for-solving-quadratic-equations">7.6. Shortcuts for Solving Quadratic Equations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-the-vertex-from-standard-form">7.6.1. Calculating the Vertex from Standard Form</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-quadratic-formula">7.6.2. The Quadratic Formula</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By n03an
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

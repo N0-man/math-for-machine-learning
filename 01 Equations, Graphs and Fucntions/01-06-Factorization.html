@@ -1,0 +1,812 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>6. Factorization &#8212; Math for ML Book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '01 Equations, Graphs and Fucntions/01-06-Factorization';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="7. Quadratic Equations" href="01-07-Quadratic%20Equations.html" />
+    <link rel="prev" title="5. Polynomials" href="01-05-Polynomials.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Math for ML Book - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Math for ML Book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to Math for Machine Learning Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">01 Equations, Graphs and Fucntions</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01-01-Introduction%20to%20Equations.html">1. Getting Started with Equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01-02-Linear%20Equations.html">2. Linear Equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01-03-Systems%20of%20Equations.html">3. Systems of Equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01-04-Exponentials%20Radicals%20and%20Logarithms.html">4. Exponentials, Radicals, and Logs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01-05-Polynomials.html">5. Polynomials</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">6. Factorization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01-07-Quadratic%20Equations.html">7. Quadratic Equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01-08-Functions.html">8. Functions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">02 Derivatives and Optimization</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../02%20%20Derivatives%20and%20Optimization/02-01-Rate%20of%20Change.html">9. Rate of Change</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/N0-man/math-for-machine-learning" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/N0-man/math-for-machine-learning/issues/new?title=Issue%20on%20page%20%2F01 Equations, Graphs and Fucntions/01-06-Factorization.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/01 Equations, Graphs and Fucntions/01-06-Factorization.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Factorization</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#factors-of-polynomial-expressions">6.1. Factors of Polynomial Expressions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#greatest-common-factor">6.2. Greatest Common Factor</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distributing-factors">6.3. Distributing Factors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formulae-for-factoring-squares">6.4. Formulae for Factoring Squares</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#differences-of-squares">6.4.1. Differences of Squares</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#perfect-squares">6.4.2. Perfect Squares</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="factorization">
+<h1><span class="section-number">6. </span>Factorization<a class="headerlink" href="#factorization" title="Link to this heading">#</a></h1>
+<p>Factorization is the process of restating an expression as the <em>product</em> of two expressions (in other words, expressions multiplied together).</p>
+<p>For example, you can make the value <strong>16</strong> by performing the following multiplications of integer numbers:</p>
+<ul class="simple">
+<li><p>1 x 16</p></li>
+<li><p>2 x 8</p></li>
+<li><p>4 x 4</p></li>
+</ul>
+<p>Another way of saying this is that 1, 2, 4, 8, and 16 are all factors of 16.</p>
+<section id="factors-of-polynomial-expressions">
+<h2><span class="section-number">6.1. </span>Factors of Polynomial Expressions<a class="headerlink" href="#factors-of-polynomial-expressions" title="Link to this heading">#</a></h2>
+<p>We can apply the same logic to polynomial expressions. For example, consider the following monomial expression:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-c79e2e37-1662-4d4c-a5f7-72cfded45930">
+<span class="eqno">(6.1)<a class="headerlink" href="#equation-c79e2e37-1662-4d4c-a5f7-72cfded45930" title="Permalink to this equation">#</a></span>\[\begin{equation}-6x^{2}y^{3} \end{equation}\]</div>
+<p>You can get this value by performing the following multiplication:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-8258f1c8-a710-4b59-8713-8ddb05ac2335">
+<span class="eqno">(6.2)<a class="headerlink" href="#equation-8258f1c8-a710-4b59-8713-8ddb05ac2335" title="Permalink to this equation">#</a></span>\[\begin{equation}(2xy^{2})(-3xy) \end{equation}\]</div>
+<p>Run the following Python code to test this with arbitrary <em><strong>x</strong></em> and <em><strong>y</strong></em> values:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randint</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="p">)</span> <span class="o">==</span> <span class="o">-</span><span class="mi">6</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">y</span><span class="o">**</span><span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<p>So, we can say that <strong>2xy<sup>2</sup></strong> and <strong>-3xy</strong> are both factors of <strong>-6x<sup>2</sup>y<sup>3</sup></strong>.</p>
+<p>This also applies to polynomials with more than one term. For example, consider the following expression:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-a4f55c92-8c00-4fad-8ac4-6ab69b314107">
+<span class="eqno">(6.3)<a class="headerlink" href="#equation-a4f55c92-8c00-4fad-8ac4-6ab69b314107" title="Permalink to this equation">#</a></span>\[\begin{equation}(x + 2)(2x^{2} - 3y + 2) = 2x^{3} + 4x^{2} - 3xy + 2x - 6y + 4 \end{equation}\]</div>
+<p>Based on this, <strong>x+2</strong> and <strong>2x<sup>2</sup> - 3y + 2</strong> are both factors of <strong>2x<sup>3</sup> + 4x<sup>2</sup> - 3xy + 2x - 6y + 4</strong>.</p>
+<p>(and if you don’t believe me, you can try this with random values for x and y with the following Python code):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randint</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">3</span><span class="o">*</span><span class="n">y</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="mi">4</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">3</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="n">y</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span> <span class="o">-</span> <span class="mi">6</span><span class="o">*</span><span class="n">y</span> <span class="o">+</span> <span class="mi">4</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="greatest-common-factor">
+<h2><span class="section-number">6.2. </span>Greatest Common Factor<a class="headerlink" href="#greatest-common-factor" title="Link to this heading">#</a></h2>
+<p>Of course, these may not be the only factors of <strong>-6x<sup>2</sup>y<sup>3</sup></strong>, just as 8 and 2 are not the only factors of 16.</p>
+<p>Additionally, 2 and 8 aren’t just factors of 16; they’re factors of other numbers too - for example, they’re both factors of 24 (because 2 x 12 = 24 and 8 x 3 = 24). Which leads us to the question, what is the highest number that is a factor of both 16 and 24? Well, let’s look at all the numbers that multiply evenly into 12 and all the numbers that multiply evenly into 24:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>16</p></th>
+<th class="head"><p>24</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1 x 16</p></td>
+<td><p>1 x 24</p></td>
+</tr>
+<tr class="row-odd"><td><p>2 x <strong>8</strong></p></td>
+<td><p>2 x 12</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>3 x <strong>8</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>4 x 4</p></td>
+<td><p>4 x 6</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The highest value that is a multiple of both 16 and 24 is <strong>8</strong>, so 8 is the <em>Greatest Common Factor</em> (or GCF) of 16 and 24.</p>
+<p>OK, let’s apply that logic to the following expressions:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-34152a37-78ae-482c-836d-547f1d482c4c">
+<span class="eqno">(6.4)<a class="headerlink" href="#equation-34152a37-78ae-482c-836d-547f1d482c4c" title="Permalink to this equation">#</a></span>\[\begin{equation}15x^{2}y\;\;\;\;\;\;\;\;9xy^{3}\end{equation}\]</div>
+<p>So what’s the greatest common factor of these two expressions?</p>
+<p>It helps to break the expressions into their consitituent components. Let’s deal with the coefficients first; we have 15 and 9. The highest value that divides evenly into both of these is <strong>3</strong> (3 x 5 = 15 and 3 x 3 = 9).</p>
+<p>Now let’s look at the <em><strong>x</strong></em> terms; we have x<sup>2</sup> and x. The highest value that divides evenly into both is these is <strong>x</strong> (<em>x</em> goes into <em>x</em> once and into <em>x</em><sup>2</sup> <em>x</em> times).</p>
+<p>Finally, for our <em><strong>y</strong></em> terms, we have y and y<sup>3</sup>. The highest value that divides evenly into both is these is <strong>y</strong> (<em>y</em> goes into <em>y</em> once and into <em>y</em><sup>3</sup> <em>y•y</em> times).</p>
+<p>Putting all of that together, the GCF of both of our expression is:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-c9f7b03e-a4fa-4cf0-b944-078bce9f3369">
+<span class="eqno">(6.5)<a class="headerlink" href="#equation-c9f7b03e-a4fa-4cf0-b944-078bce9f3369" title="Permalink to this equation">#</a></span>\[\begin{equation}3xy\end{equation}\]</div>
+<p>An easy shortcut to identifying the GCF of an expression that includes variables with exponentials is that it will always consist of:</p>
+<ul class="simple">
+<li><p>The <em>largest</em> numeric factor of the numeric coefficients in the polynomial expressions (in this case 3)</p></li>
+<li><p>The <em>smallest</em> exponential of each variable (in this case, x and y, which technically are x<sup>1</sup> and y<sup>1</sup>.</p></li>
+</ul>
+<p>You can check your answer by dividing the original expressions by the GCF to find the coefficent expressions for the GCF (in other words, how many times the GCF divides into the original expression). The result, when multiplied by the GCF will always produce the original expression. So in this case, we need to perform the following divisions:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-3316c1ed-3bd9-4312-a8e3-3747990c8be7">
+<span class="eqno">(6.6)<a class="headerlink" href="#equation-3316c1ed-3bd9-4312-a8e3-3747990c8be7" title="Permalink to this equation">#</a></span>\[\begin{equation}\frac{15x^{2}y}{3xy}\;\;\;\;\;\;\;\;\frac{9xy^{3}}{3xy}\end{equation}\]</div>
+<p>These fractions simplify to <strong>5x</strong> and <strong>3y<sup>2</sup></strong>, giving us the following calculations to prove our factorization:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-3a1512fe-88de-4494-aacc-a87d7d05bdfc">
+<span class="eqno">(6.7)<a class="headerlink" href="#equation-3a1512fe-88de-4494-aacc-a87d7d05bdfc" title="Permalink to this equation">#</a></span>\[\begin{equation}3xy(5x) = 15x^{2}y\end{equation}\]</div>
+<div class="amsmath math notranslate nohighlight" id="equation-e3d1b245-943d-4131-ad6c-907ac950ee35">
+<span class="eqno">(6.8)<a class="headerlink" href="#equation-e3d1b245-943d-4131-ad6c-907ac950ee35" title="Permalink to this equation">#</a></span>\[\begin{equation}3xy(3y^{2}) = 9xy^{3}\end{equation}\]</div>
+<p>Let’s try both of those in Python:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randint</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">((</span><span class="mi">3</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">5</span><span class="o">*</span><span class="n">x</span><span class="p">)</span> <span class="o">==</span> <span class="mi">15</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">((</span><span class="mi">3</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">y</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="mi">9</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+True
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="distributing-factors">
+<h2><span class="section-number">6.3. </span>Distributing Factors<a class="headerlink" href="#distributing-factors" title="Link to this heading">#</a></h2>
+<p>Let’s look at another example. Here is a binomial expression:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-2863db6e-9341-4f77-8a45-861c6651035c">
+<span class="eqno">(6.9)<a class="headerlink" href="#equation-2863db6e-9341-4f77-8a45-861c6651035c" title="Permalink to this equation">#</a></span>\[\begin{equation}6x + 15y \end{equation}\]</div>
+<p>To factor this, we need to find an expression that divides equally into both of these expressions. In this case, we can use <strong>3</strong> to factor the coefficents, because 3 • 2x = 6x and 3• 5y = 15y, so we can write our original expression as:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-3a3876fb-7ddd-434d-b5fb-c553b351e8c1">
+<span class="eqno">(6.10)<a class="headerlink" href="#equation-3a3876fb-7ddd-434d-b5fb-c553b351e8c1" title="Permalink to this equation">#</a></span>\[\begin{equation}6x + 15y = 3(2x) + 3(5y) \end{equation}\]</div>
+<p>Now, remember the distributive property? It enables us to multiply each term of an expression by the same factor to calculate the product of the expression multiplied by the factor. We can <em>factor-out</em> the common factor in this expression to distribute it like this:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-827a140f-5cd8-4d40-ae5b-c4c60a0a4f9a">
+<span class="eqno">(6.11)<a class="headerlink" href="#equation-827a140f-5cd8-4d40-ae5b-c4c60a0a4f9a" title="Permalink to this equation">#</a></span>\[\begin{equation}6x + 15y = 3(2x) + 3(5y) = \mathbf{3(2x + 5y)} \end{equation}\]</div>
+<p>Let’s prove to ourselves that these all evaluate to the same thing:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randint</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="p">(</span><span class="mi">6</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="mi">15</span><span class="o">*</span><span class="n">y</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="p">(</span><span class="mi">5</span><span class="o">*</span><span class="n">y</span><span class="p">))</span> <span class="o">==</span> <span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="mi">5</span><span class="o">*</span><span class="n">y</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<p>For something a little more complex, let’s return to our previous example. Suppose we want to add our original 15x<sup>2</sup>y and 9xy<sup>3</sup> expressions:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-6e7e12f7-2c00-4f5e-b3dd-591987b207dd">
+<span class="eqno">(6.12)<a class="headerlink" href="#equation-6e7e12f7-2c00-4f5e-b3dd-591987b207dd" title="Permalink to this equation">#</a></span>\[\begin{equation}15x^{2}y + 9xy^{3}\end{equation}\]</div>
+<p>We’ve already calculated the common factor, so we know that:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-18e74df1-30fc-4fdf-b4f4-51c057a8fd1d">
+<span class="eqno">(6.13)<a class="headerlink" href="#equation-18e74df1-30fc-4fdf-b4f4-51c057a8fd1d" title="Permalink to this equation">#</a></span>\[\begin{equation}3xy(5x) = 15x^{2}y\end{equation}\]</div>
+<div class="amsmath math notranslate nohighlight" id="equation-5bee4b6d-97d8-4d4a-b356-c0f82270ab4f">
+<span class="eqno">(6.14)<a class="headerlink" href="#equation-5bee4b6d-97d8-4d4a-b356-c0f82270ab4f" title="Permalink to this equation">#</a></span>\[\begin{equation}3xy(3y^{2}) = 9xy^{3}\end{equation}\]</div>
+<p>Now we can factor-out the common factor to produce a single expression:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-97d8aa20-86a3-4924-a663-2e31bb582861">
+<span class="eqno">(6.15)<a class="headerlink" href="#equation-97d8aa20-86a3-4924-a663-2e31bb582861" title="Permalink to this equation">#</a></span>\[\begin{equation}15x^{2}y + 9xy^{3} = \mathbf{3xy(5x + 3y^{2})}\end{equation}\]</div>
+<p>And here’s the Python test code:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randint</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="p">(</span><span class="mi">15</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">y</span> <span class="o">+</span> <span class="mi">9</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="o">*</span><span class="p">(</span><span class="mi">5</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="n">y</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<p>So you might be wondering what’s so great about being able to distribute the common factor like this. The answer is that it can often be useful to apply a common factor to multiple terms in order to solve seemingly complex problems.</p>
+<p>For example, consider this:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-775b9637-a77b-44bf-b368-8233e9a8cd1d">
+<span class="eqno">(6.16)<a class="headerlink" href="#equation-775b9637-a77b-44bf-b368-8233e9a8cd1d" title="Permalink to this equation">#</a></span>\[\begin{equation}x^{2} + y^{2} + z^{2} = 127\end{equation}\]</div>
+<p>Now solve this equation:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-9a97aad5-929d-4f43-9f78-9c830f547b7d">
+<span class="eqno">(6.17)<a class="headerlink" href="#equation-9a97aad5-929d-4f43-9f78-9c830f547b7d" title="Permalink to this equation">#</a></span>\[\begin{equation}a = 5x^{2} + 5y^{2} + 5z^{2}\end{equation}\]</div>
+<p>At first glance, this seems tricky because there are three unknown variables, and even though we know that their squares add up to 127, we don’t know their individual values. However, we can distribute the common factor and apply what we <em>do</em> know. Let’s restate the problem like this:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-855400a5-9b08-42ac-a0d6-2b93a6eed93e">
+<span class="eqno">(6.18)<a class="headerlink" href="#equation-855400a5-9b08-42ac-a0d6-2b93a6eed93e" title="Permalink to this equation">#</a></span>\[\begin{equation}a = 5(x^{2} + y^{2} + z^{2})\end{equation}\]</div>
+<p>Now it becomes easier to solve, because we know that the expression in parenthesis is equal to 127, so actually our equation is:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-fdf17b44-e08b-498d-b660-bf98447c6617">
+<span class="eqno">(6.19)<a class="headerlink" href="#equation-fdf17b44-e08b-498d-b660-bf98447c6617" title="Permalink to this equation">#</a></span>\[\begin{equation}a = 5(127)\end{equation}\]</div>
+<p>So <em><strong>a</strong></em> is 5 times 127, which is 635</p>
+</section>
+<section id="formulae-for-factoring-squares">
+<h2><span class="section-number">6.4. </span>Formulae for Factoring Squares<a class="headerlink" href="#formulae-for-factoring-squares" title="Link to this heading">#</a></h2>
+<p>There are some useful ways that you can employ factoring to deal with expressions that contain squared values (that is, values with an exponential of 2).</p>
+<section id="differences-of-squares">
+<h3><span class="section-number">6.4.1. </span>Differences of Squares<a class="headerlink" href="#differences-of-squares" title="Link to this heading">#</a></h3>
+<p>Consider the following expression:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-a6622817-89c8-4c48-bbcf-4abdc0fa5cd3">
+<span class="eqno">(6.20)<a class="headerlink" href="#equation-a6622817-89c8-4c48-bbcf-4abdc0fa5cd3" title="Permalink to this equation">#</a></span>\[\begin{equation}x^{2} - 9\end{equation}\]</div>
+<p>The constant <em>9</em> is 3<sup>2</sup>, so we could rewrite this as:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-8da5f367-0ef9-47c1-a751-1da1995ed78e">
+<span class="eqno">(6.21)<a class="headerlink" href="#equation-8da5f367-0ef9-47c1-a751-1da1995ed78e" title="Permalink to this equation">#</a></span>\[\begin{equation}x^{2} - 3^{2}\end{equation}\]</div>
+<p>Whenever you need to subtract one squared term from another, you can use an approach called the <em>difference of squares</em>, whereby we can factor <em>a<sup>2</sup> - b<sup>2</sup></em> as <em>(a - b)(a + b)</em>; so we can rewrite the expression as:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-b29c0e3b-c37a-4ca0-a47e-ee68a0d29c02">
+<span class="eqno">(6.22)<a class="headerlink" href="#equation-b29c0e3b-c37a-4ca0-a47e-ee68a0d29c02" title="Permalink to this equation">#</a></span>\[\begin{equation}(x - 3)(x + 3)\end{equation}\]</div>
+<p>Run the code below to check this:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randint</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">9</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="perfect-squares">
+<h3><span class="section-number">6.4.2. </span>Perfect Squares<a class="headerlink" href="#perfect-squares" title="Link to this heading">#</a></h3>
+<p>A <em>perfect square</em> is a number multiplied by itself, for example 3 multipled by 3 is 9, so 9 is a perfect square.</p>
+<p>When working with equations, the ability to factor between polynomial expressions and binomial perfect square expressions can be a useful tool. For example, consider this expression:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-09e64c52-e801-4e4a-8321-922f62558af0">
+<span class="eqno">(6.23)<a class="headerlink" href="#equation-09e64c52-e801-4e4a-8321-922f62558af0" title="Permalink to this equation">#</a></span>\[\begin{equation}x^{2} + 10x + 25\end{equation}\]</div>
+<p>We can use 5 as a common factor to rewrite this as:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-12cf2503-c823-41cf-b986-d7f6845e4e64">
+<span class="eqno">(6.24)<a class="headerlink" href="#equation-12cf2503-c823-41cf-b986-d7f6845e4e64" title="Permalink to this equation">#</a></span>\[\begin{equation}(x + 5)(x + 5)\end{equation}\]</div>
+<p>So what happened here?</p>
+<p>Well, first we found a common factor for our coefficients: 5 goes into 10 twice and into 25 five times (in other words, squared). Then we just expressed this factoring as a multiplication of two identical binomials <em>(x + 5)(x + 5)</em>.</p>
+<p>Remember the rule for multiplication of polynomials is to multiple each term in the first polynomial by each term in the second polynomial and then add the results; so you can do this to verify the factorization:</p>
+<ul class="simple">
+<li><p>x • x = x<sup>2</sup></p></li>
+<li><p>x • 5 = 5x</p></li>
+<li><p>5 • x = 5x</p></li>
+<li><p>5 • 5 = 25</p></li>
+</ul>
+<p>When you combine the two 5x terms we get back to our original expression of x<sup>2</sup> + 10x + 25.</p>
+<p>Now we have an expression multipled by itself; in other words, a perfect square. We can therefore rewrite this as:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-0fa68f66-a5df-463b-a39d-317950b4efe2">
+<span class="eqno">(6.25)<a class="headerlink" href="#equation-0fa68f66-a5df-463b-a39d-317950b4efe2" title="Permalink to this equation">#</a></span>\[\begin{equation}(x + 5)^{2}\end{equation}\]</div>
+<p>Factorization of perfect squares is a useful technique, as you’ll see when we start to tackle quadratic equations in the next section. In fact, it’s so useful that it’s worth memorizing its formula:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-9cafbb9f-f6f9-4cf9-a9c3-910d1630ad75">
+<span class="eqno">(6.26)<a class="headerlink" href="#equation-9cafbb9f-f6f9-4cf9-a9c3-910d1630ad75" title="Permalink to this equation">#</a></span>\[\begin{equation}(a + b)^{2} = a^{2} + b^{2}+ 2ab \end{equation}\]</div>
+<p>In our example, the <em>a</em> terms is <em><strong>x</strong></em> and the <em>b</em> terms is <em><strong>5</strong></em>, and in standard form, our equation  <em>x<sup>2</sup> + 10x + 25</em> is actually <em>a<sup>2</sup> +  2ab + b<sup>2</sup></em>. The operations are all additions, so the order isn’t actually important!</p>
+<p>Run the following code with random values for <em>a</em> and <em>b</em> to verify that the formula works:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randint</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="n">a</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">b</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="n">b</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./01 Equations, Graphs and Fucntions"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="01-05-Polynomials.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>Polynomials</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="01-07-Quadratic%20Equations.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">7. </span>Quadratic Equations</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#factors-of-polynomial-expressions">6.1. Factors of Polynomial Expressions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#greatest-common-factor">6.2. Greatest Common Factor</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distributing-factors">6.3. Distributing Factors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formulae-for-factoring-squares">6.4. Formulae for Factoring Squares</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#differences-of-squares">6.4.1. Differences of Squares</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#perfect-squares">6.4.2. Perfect Squares</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By n03an
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

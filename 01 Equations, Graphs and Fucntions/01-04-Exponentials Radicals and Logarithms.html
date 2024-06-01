@@ -1,0 +1,810 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>4. Exponentials, Radicals, and Logs &#8212; Math for ML Book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '01 Equations, Graphs and Fucntions/01-04-Exponentials Radicals and Logarithms';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="5. Polynomials" href="01-05-Polynomials.html" />
+    <link rel="prev" title="3. Systems of Equations" href="01-03-Systems%20of%20Equations.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Math for ML Book - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Math for ML Book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to Math for Machine Learning Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">01 Equations, Graphs and Fucntions</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01-01-Introduction%20to%20Equations.html">1. Getting Started with Equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01-02-Linear%20Equations.html">2. Linear Equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01-03-Systems%20of%20Equations.html">3. Systems of Equations</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">4. Exponentials, Radicals, and Logs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01-05-Polynomials.html">5. Polynomials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01-06-Factorization.html">6. Factorization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01-07-Quadratic%20Equations.html">7. Quadratic Equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01-08-Functions.html">8. Functions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">02 Derivatives and Optimization</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../02%20%20Derivatives%20and%20Optimization/02-01-Rate%20of%20Change.html">9. Rate of Change</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/N0-man/math-for-machine-learning" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/N0-man/math-for-machine-learning/issues/new?title=Issue%20on%20page%20%2F01 Equations, Graphs and Fucntions/01-04-Exponentials Radicals and Logarithms.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/01 Equations, Graphs and Fucntions/01-04-Exponentials Radicals and Logarithms.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Exponentials, Radicals, and Logs</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exponentials">4.1. Exponentials</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#radicals-roots">4.2. Radicals (Roots)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logarithms">4.3. Logarithms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-equations-with-exponentials">4.4. Solving Equations with Exponentials</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="exponentials-radicals-and-logs">
+<h1><span class="section-number">4. </span>Exponentials, Radicals, and Logs<a class="headerlink" href="#exponentials-radicals-and-logs" title="Link to this heading">#</a></h1>
+<p>Up to this point, all of our equations have included standard arithmetic operations, such as division, multiplication, addition, and subtraction. Many real-world calculations involve exponential values in which numbers are raised by a specific power.</p>
+<section id="exponentials">
+<h2><span class="section-number">4.1. </span>Exponentials<a class="headerlink" href="#exponentials" title="Link to this heading">#</a></h2>
+<p>A simple case of of using an exponential is squaring a number; in other words, multipying a number by itself. For example, 2 squared is 2 times 2, which is 4. This is written like this:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-83bf4117-cd63-4aaa-a7fa-641b3086ee0f">
+<span class="eqno">(4.1)<a class="headerlink" href="#equation-83bf4117-cd63-4aaa-a7fa-641b3086ee0f" title="Permalink to this equation">#</a></span>\[\begin{equation}2^{2} = 2 \cdot 2 = 4\end{equation}\]</div>
+<p>Similarly, 2 cubed is 2 times 2 times 2 (which is of course 8):</p>
+<div class="amsmath math notranslate nohighlight" id="equation-694ca9e6-ce7b-4aa3-8237-3b0aa5c90c43">
+<span class="eqno">(4.2)<a class="headerlink" href="#equation-694ca9e6-ce7b-4aa3-8237-3b0aa5c90c43" title="Permalink to this equation">#</a></span>\[\begin{equation}2^{3} = 2 \cdot 2 \cdot 2 = 8\end{equation}\]</div>
+<p>In Python, you use the <strong>**</strong> operator, like this example in which <strong>x</strong> is assigned the value of 5 raised to the power of 3 (in other words, 5 x 5 x 5, or 5-cubed):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">5</span><span class="o">**</span><span class="mi">3</span> <span class="c1"># cube</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>125
+</pre></div>
+</div>
+</div>
+</div>
+<p>Multiplying a number by itself twice or three times to calculate the square or cube of a number is a common operation, but you can raise a number by any exponential power. For example, the following notation shows 4 to the power of 7 (or 4 x 4 x 4 x 4 x 4 x 4 x 4), which has the value:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-9bcc6688-7000-4acd-865b-0a644d9b97d8">
+<span class="eqno">(4.3)<a class="headerlink" href="#equation-9bcc6688-7000-4acd-865b-0a644d9b97d8" title="Permalink to this equation">#</a></span>\[\begin{equation}4^{7} = 16384 \end{equation}\]</div>
+<p>In mathematical terminology, <strong>4</strong> is the <em>base</em>, and <strong>7</strong> is the <em>power</em> or <em>exponent</em> in this expression.</p>
+</section>
+<section id="radicals-roots">
+<h2><span class="section-number">4.2. </span>Radicals (Roots)<a class="headerlink" href="#radicals-roots" title="Link to this heading">#</a></h2>
+<p>While it’s common to need to calculate the solution for a given base and exponential, sometimes you’ll need to calculate one or other of the elements themselves. For example, consider the following expression:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-207038b2-4444-43ec-b3c4-71fff8bcf87e">
+<span class="eqno">(4.4)<a class="headerlink" href="#equation-207038b2-4444-43ec-b3c4-71fff8bcf87e" title="Permalink to this equation">#</a></span>\[\begin{equation}?^{2} = 9 \end{equation}\]</div>
+<p>This expression is asking, given a number (9) and an exponent (2), what’s the base? In other words, which number multipled by itself results in 9? This type of operation is referred to as calculating the <em>root</em>, and in this particular case it’s the <em>square root</em> (the base for a specified number given the exponential <strong>2</strong>). In this case, the answer is 3, because 3 x 3 = 9. We show this with a <strong>√</strong> symbol, like this:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-dbab38e2-dd77-4081-9ad0-88a652c7cbba">
+<span class="eqno">(4.5)<a class="headerlink" href="#equation-dbab38e2-dd77-4081-9ad0-88a652c7cbba" title="Permalink to this equation">#</a></span>\[\begin{equation}\sqrt{9} = 3 \end{equation}\]</div>
+<p>Other common roots include the <em>cube root</em> (the base for a specified number given the exponential <strong>3</strong>). For example, the cube root of 64 is 4 (because 4 x 4 x 4 = 64). To show that this is the cube root, we include the exponent <strong>3</strong> in the <strong>√</strong> symbol, like this:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-236b3069-1a59-4b34-9054-0aae8ec0e36e">
+<span class="eqno">(4.6)<a class="headerlink" href="#equation-236b3069-1a59-4b34-9054-0aae8ec0e36e" title="Permalink to this equation">#</a></span>\[\begin{equation}\sqrt[3]{64} = 4 \end{equation}\]</div>
+<p>We can calculate any root of any non-negative number, indicating the exponent in the <strong>√</strong> symbol.</p>
+<p>The <strong>math</strong> package in Python includes a <strong>sqrt</strong> function that calculates the square root of a number. To calculate other roots, you need to reverse the exponential calculation by raising the given number to the power of 1 divided by the given exponent:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+
+<span class="c1"># Calculate square root of 25</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="c1"># Calculate cube root of 64</span>
+<span class="n">cr</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="mi">64</span> <span class="o">**</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="mi">3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cr</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.0
+4
+</pre></div>
+</div>
+</div>
+</div>
+<p>The code used in Python to calculate roots other than the square root reveals something about the relationship between roots and exponentials. The exponential root of a number is the same as that number raised to the power of 1 divided by the exponential. For example, consider the following statement:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-05f7147a-04ce-4875-9eb6-7543b4bd5360">
+<span class="eqno">(4.7)<a class="headerlink" href="#equation-05f7147a-04ce-4875-9eb6-7543b4bd5360" title="Permalink to this equation">#</a></span>\[\begin{equation} 8^{\frac{1}{3}} = \sqrt[3]{8} = 2 \end{equation}\]</div>
+<p>Note that a number to the power of 1/3 is the same as the cube root of that number.</p>
+<p>Based on the same arithmetic, a number to the power of 1/2 is the same as the square root of the number:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-45a6f962-95fa-4e54-98e0-89d908ae7ceb">
+<span class="eqno">(4.8)<a class="headerlink" href="#equation-45a6f962-95fa-4e54-98e0-89d908ae7ceb" title="Permalink to this equation">#</a></span>\[\begin{equation} 9^{\frac{1}{2}} = \sqrt{9} = 3 \end{equation}\]</div>
+<p>You can see this for yourself with the following Python code:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+
+<span class="nb">print</span> <span class="p">(</span><span class="mi">9</span><span class="o">**</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">9</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.0
+3.0
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="logarithms">
+<h2><span class="section-number">4.3. </span>Logarithms<a class="headerlink" href="#logarithms" title="Link to this heading">#</a></h2>
+<p>Another consideration for exponential values is the requirement occassionally to determine the exponent for a given number and base. In other words, how many times do I need to multiply a base number by itself to get the given result. This kind of calculation is known as the <em>logarithm</em>.</p>
+<p>For example, consider the following expression:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-50c09e28-a521-4004-b41a-1be26455f5cd">
+<span class="eqno">(4.9)<a class="headerlink" href="#equation-50c09e28-a521-4004-b41a-1be26455f5cd" title="Permalink to this equation">#</a></span>\[\begin{equation}4^{?} = 16 \end{equation}\]</div>
+<p>In other words, to what power must you raise 4 to produce the result 16?</p>
+<p>The answer to this is 2, because 4 x 4 (or 4 to the power of 2) = 16. The notation looks like this:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-9387301b-b912-42a2-893a-9a6066a221ff">
+<span class="eqno">(4.10)<a class="headerlink" href="#equation-9387301b-b912-42a2-893a-9a6066a221ff" title="Permalink to this equation">#</a></span>\[\begin{equation}log_{4}(16) = 2 \end{equation}\]</div>
+<p>In Python, you can calculate the logarithm of a number using the <strong>log</strong> function in the <strong>math</strong> package, indicating the number and the base:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>The final thing you need to know about exponentials and logarithms is that there are some special logarithms:</p>
+<p>The <em>common</em> logarithm of a number is its exponential for the base <strong>10</strong>. You’ll occassionally see this written using the usual <em>log</em> notation with the base omitted:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-d6f6b274-33c5-4cc3-84c6-9af77bce4e61">
+<span class="eqno">(4.11)<a class="headerlink" href="#equation-d6f6b274-33c5-4cc3-84c6-9af77bce4e61" title="Permalink to this equation">#</a></span>\[\begin{equation}log(1000) = 3 \end{equation}\]</div>
+<p>Another special logarithm is something called the <em>natural log</em>, which is a exponential of a number for base <em><strong>e</strong></em>, where <em><strong>e</strong></em> is a constant with the approximate value 2.718. This number occurs naturally in a lot of scenarios, and you’ll see it often as you work with data in many analytical contexts. For the time being, just be aware that the natural log is sometimes written as <em><strong>ln</strong></em>:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-81b1b0b1-75ce-4640-9ed1-49f9b48ed474">
+<span class="eqno">(4.12)<a class="headerlink" href="#equation-81b1b0b1-75ce-4640-9ed1-49f9b48ed474" title="Permalink to this equation">#</a></span>\[\begin{equation}log_{e}(64) = ln(64) = 4.1589 \end{equation}\]</div>
+<p>The <strong>math.log</strong> function in Python returns the natural log (base <em><strong>e</strong></em>) when no base is specified. Note that this can be confusing, as the mathematical notation <em>log</em> with no base usually refers to the common log (base <strong>10</strong>). To return the common log in Python, use the <strong>math.log10</strong> function:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+
+<span class="c1"># Natural log of 29 (exponent as e i.e. 2.71828)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Natural Log of 29: </span><span class="si">{</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">29</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Common log of 100 (exponent as 10)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Common Log of 100: </span><span class="si">{</span><span class="n">math</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Natural Log of 29: 3.367295829986474
+Common Log of 100: 2.0
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="solving-equations-with-exponentials">
+<h2><span class="section-number">4.4. </span>Solving Equations with Exponentials<a class="headerlink" href="#solving-equations-with-exponentials" title="Link to this heading">#</a></h2>
+<p>OK, so now that you have a basic understanding of exponentials, roots, and logarithms; let’s take a look at some equations that involve exponential calculations.</p>
+<p>Let’s start with what might at first glance look like a complicated example, but don’t worry - we’ll solve it step-by-step and learn a few tricks along the way:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-595d3bc5-843b-4d1b-9406-c25b43fb7e36">
+<span class="eqno">(4.13)<a class="headerlink" href="#equation-595d3bc5-843b-4d1b-9406-c25b43fb7e36" title="Permalink to this equation">#</a></span>\[\begin{equation}2y = 2x^{4} ( \frac{x^{2} + 2x^{2}}{x^{3}} ) \end{equation}\]</div>
+<p>First, let’s deal with the fraction on the right side. The numerator of this fraction is x<sup>2</sup> + 2x<sup>2</sup> - so we’re adding two exponential terms. When the terms you’re adding (or subtracting) have the same exponential, you can simply add (or subtract) the coefficients. In this case, x<sup>2</sup> is the same as 1x<sup>2</sup>, which when added to 2x<sup>2</sup> gives us the result 3x<sup>2</sup>, so our equation now looks like this:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-b224750b-d419-40f6-9a45-9ca348103881">
+<span class="eqno">(4.14)<a class="headerlink" href="#equation-b224750b-d419-40f6-9a45-9ca348103881" title="Permalink to this equation">#</a></span>\[\begin{equation}2y = 2x^{4} ( \frac{3x^{2}}{x^{3}} ) \end{equation}\]</div>
+<p>Now that we’ve condolidated the numerator, let’s simplify the entire fraction by dividing the numerator by the denominator. When you divide exponential terms with the same variable, you simply divide the coefficients as you usually would and subtract the exponential of the denominator from the exponential of the numerator. In this case, we’re dividing 3x<sup>2</sup> by 1x<sup>3</sup>: The coefficient 3 divided by 1 is 3, and the exponential 2 minus 3 is -1, so the result is 3x<sup>-1</sup>, making our equation:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-12137f19-ed87-4b19-8d69-328f01c0f27c">
+<span class="eqno">(4.15)<a class="headerlink" href="#equation-12137f19-ed87-4b19-8d69-328f01c0f27c" title="Permalink to this equation">#</a></span>\[\begin{equation}2y = 2x^{4} ( 3x^{-1} ) \end{equation}\]</div>
+<p>So now we’ve got rid of the fraction on the right side, let’s deal with the remaining multiplication. We need to multiply 3x<sup>-1</sup> by 2x<sup>4</sup>. Multiplication, is the opposite of division, so this time we’ll multipy the coefficients and add the exponentials: 3 multiplied by 2 is 6, and -1 + 4 is 3, so the result is 6x<sup>3</sup>:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-538de00f-1a10-4700-b51d-a51e3e6a8e29">
+<span class="eqno">(4.16)<a class="headerlink" href="#equation-538de00f-1a10-4700-b51d-a51e3e6a8e29" title="Permalink to this equation">#</a></span>\[\begin{equation}2y = 6x^{3} \end{equation}\]</div>
+<p>We’re in the home stretch now, we just need to isolate y on the left side, and we can do that by dividing both sides by 2. Note that we’re not dividing by an exponential, we simply need to divide the whole 6x<sup>3</sup> term by two; and half of 6 times x<sup>3</sup> is just 3 times x<sup>3</sup>:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-7aacf4bf-be2d-43f9-86e3-c5f5197e977c">
+<span class="eqno">(4.17)<a class="headerlink" href="#equation-7aacf4bf-be2d-43f9-86e3-c5f5197e977c" title="Permalink to this equation">#</a></span>\[\begin{equation}y = 3x^{3} \end{equation}\]</div>
+<p>Now we have a solution that defines y in terms of x. We can use Python to plot the line created by this equation for a set of arbitrary <em>x</em> and <em>y</em> values:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># Create a dataframe with an x column containing values from -10 to 10</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="p">({</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">)})</span>
+
+<span class="c1"># Add a y column by applying the slope-intercept equation to x</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span><span class="o">*</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">3</span>
+
+<span class="c1">#Display the dataframe</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+<span class="c1"># Plot the line</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;magenta&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1"># Create a dataframe with an x column containing values from -10 to 10</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="p">({</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">)})</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;pandas&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that the line is curved. This is symptomatic of an exponential equation: as values on one axis increase or decrease, the values on the other axis scale <em>exponentially</em> rather than <em>linearly</em>.</p>
+<p>Let’s look at an example in which x is the exponential, not the base:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-8bb9ac39-b37d-4998-85c2-8f31c0cb9ea7">
+<span class="eqno">(4.18)<a class="headerlink" href="#equation-8bb9ac39-b37d-4998-85c2-8f31c0cb9ea7" title="Permalink to this equation">#</a></span>\[\begin{equation}y = 2^{x} \end{equation}\]</div>
+<p>We can still plot this as a line:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># Create a dataframe with an x column containing values from -10 to 10</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="p">({</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">)})</span>
+
+<span class="c1"># Add a y column by applying the slope-intercept equation to x</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">2.0</span><span class="o">**</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span>
+
+<span class="c1">#Display the dataframe</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+<span class="c1"># Plot the line</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;magenta&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that when the exponential is a negative number, Python reports the result as 0. Actually, it’s a very small fractional number, but because the base is positive the exponential number will always positive. Also, note the rate at which y increases as x increases - exponential growth can be be pretty dramatic.</p>
+<p>So what’s the practical application of this?</p>
+<p>Well, let’s suppose you deposit $100 in a bank account that earns 5% interest per year. What would the balance of the account be in twenty years, assuming you don’t deposit or withdraw any additional funds?</p>
+<p>To work this out, you could calculate the balance for each year:</p>
+<p>After the first year, the balance will be the initial deposit ($100) plus 5% of that amount:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-40982fd1-e428-421d-8713-f975a428bffc">
+<span class="eqno">(4.19)<a class="headerlink" href="#equation-40982fd1-e428-421d-8713-f975a428bffc" title="Permalink to this equation">#</a></span>\[\begin{equation}y1 = 100 + (100 \cdot 0.05) \end{equation}\]</div>
+<p>Another way of saying this is:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-3ad10503-03bb-48a4-8671-dae173b35f9a">
+<span class="eqno">(4.20)<a class="headerlink" href="#equation-3ad10503-03bb-48a4-8671-dae173b35f9a" title="Permalink to this equation">#</a></span>\[\begin{equation}y1 = 100 \cdot 1.05 \end{equation}\]</div>
+<p>At the end of year two, the balance will be the year one balance plus 5%:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-4a1282a3-6a29-404b-ad14-044ba8417f85">
+<span class="eqno">(4.21)<a class="headerlink" href="#equation-4a1282a3-6a29-404b-ad14-044ba8417f85" title="Permalink to this equation">#</a></span>\[\begin{equation}y2 = 100 \cdot 1.05 \cdot 1.05 \end{equation}\]</div>
+<p>Note that the interest for year two, is the interest for year one multiplied by itself - in other words, squared. So another way of saying this is:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-2843f6bf-27bd-4012-af89-a0861afd0949">
+<span class="eqno">(4.22)<a class="headerlink" href="#equation-2843f6bf-27bd-4012-af89-a0861afd0949" title="Permalink to this equation">#</a></span>\[\begin{equation}y2 = 100 \cdot 1.05^{2} \end{equation}\]</div>
+<p>It turns out, if we just use the year as the exponent, we can easily calculate the growth after twenty years like this:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-5ffc13c7-672c-4a7b-b994-a1f52e1ff56a">
+<span class="eqno">(4.23)<a class="headerlink" href="#equation-5ffc13c7-672c-4a7b-b994-a1f52e1ff56a" title="Permalink to this equation">#</a></span>\[\begin{equation}y20 = 100 \cdot 1.05^{20} \end{equation}\]</div>
+<p>Let’s apply this logic in Python to see how the account balance would grow over twenty years:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># Create a dataframe with 20 years</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="p">({</span><span class="s1">&#39;Year&#39;</span><span class="p">:</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">21</span><span class="p">)})</span>
+
+<span class="c1"># Calculate the balance for each year based on the exponential growth from interest</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Balance&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.05</span><span class="o">**</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">])</span>
+
+<span class="c1">#Display the dataframe</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+<span class="c1"># Plot the line</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Year</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">Balance</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Year&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Balance&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./01 Equations, Graphs and Fucntions"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="01-03-Systems%20of%20Equations.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>Systems of Equations</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="01-05-Polynomials.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>Polynomials</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exponentials">4.1. Exponentials</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#radicals-roots">4.2. Radicals (Roots)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logarithms">4.3. Logarithms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-equations-with-exponentials">4.4. Solving Equations with Exponentials</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By n03an
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
