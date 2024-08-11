@@ -5,7 +5,6 @@ format: jb-book
 root: intro
 parts:
   - caption: 01 Equations, Graphs and Fucntions
-    numbered: True
     chapters:
       - file: 01 Equations, Graphs and Fucntions/01-01-Introduction to Equations
       - file: 01 Equations, Graphs and Fucntions/01-02-Linear Equations
@@ -16,6 +15,6 @@ parts:
       - file: 01 Equations, Graphs and Fucntions/01-07-Quadratic Equations
       - file: 01 Equations, Graphs and Fucntions/01-08-Functions
   - caption: 02 Derivatives and Optimization
-    numbered: True
     chapters:
       - file: 02  Derivatives and Optimization/02-01-Rate of Change
+      - file: 02  Derivatives and Optimization/02-01-Limits
