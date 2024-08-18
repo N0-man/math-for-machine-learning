@@ -18,3 +18,9 @@ parts:
     chapters:
       - file: 02  Derivatives and Optimization/02-01-Rate of Change
       - file: 02  Derivatives and Optimization/02-02-Limits
+  - caption: 03 Vectors and Matrices
+    chapters:
+      - file: 03 Vectors and Matrices/03-01-Vectors
+      - file: 03 Vectors and Matrices/03-02-Vector Multiplication
+      - file: 03 Vectors and Matrices/03-03-Matrices
+      - file: 03 Vectors and Matrices/03-04-More Matrices
