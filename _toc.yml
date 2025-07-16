@@ -24,3 +24,11 @@ parts:
       - file: 03 Vectors and Matrices/03-02-Vector Multiplication
       - file: 03 Vectors and Matrices/03-03-Matrices
       - file: 03 Vectors and Matrices/03-04-More Matrices
+  - caption: 04 Data distributions and Probability
+    chapters:
+      - file: 04 Modules/04-01-Data and Visualization
+      - file: 04 Modules/04-02-Statistics Fundamentals
+      - file: 04 Modules/04-03-Comparing Data
+      - file: 04 Modules/04-04-Probability
+      - file: 04 Modules/04-05-Sampling Distributions
+      - file: 04 Modules/04-06-Hypothesis Testing
